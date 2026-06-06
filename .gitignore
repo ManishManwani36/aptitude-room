@@ -1,0 +1,7 @@
+node_modules/
+package-lock.json
+# local build artifacts (contain machine-specific paths / intermediate data)
+inject.js
+verbal_recovered.json
+verbal_verified.json
+.DS_Store

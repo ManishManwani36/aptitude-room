@@ -1,0 +1,14 @@
+{
+  "name": "aptitude-room",
+  "version": "1.0.0",
+  "description": "The Aptitude Room — a self-contained practice bank of 80 managerial-level SHL aptitude questions with worked solutions.",
+  "private": true,
+  "scripts": {
+    "test": "node test.cjs"
+  },
+  "keywords": ["SHL", "aptitude", "psychometric", "practice", "numerical", "verbal", "inductive", "deductive"],
+  "license": "MIT",
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}

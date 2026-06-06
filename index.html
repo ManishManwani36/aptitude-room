@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Aptitude Room — SHL Managerial Practice</title>
+<meta name="description" content="A managerial-level SHL practice bank: 80 questions across Numerical, Verbal, Inductive and Deductive reasoning, with worked solutions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================= THEME */
+:root{
+  --bg:#f3ecdd; --bg-2:#fbf7ee; --panel:#fffdf8;
+  --ink:#22242b; --ink-soft:#6c6457; --ink-faint:#9a9080;
+  --line:#e4dac6; --line-strong:#d2c5aa;
+  --accent:#bd4d2b; --accent-deep:#9a3c20; --accent-soft:#f0dccf;
+  --good:#2f7d57; --good-soft:#dcebdf; --bad:#b23b3b; --warn:#b5862f;
+  --fig-ink:#26262c; --fig-grey:#c7bca4; --fig-accent:#bd4d2b;
+  --shadow:0 1px 2px rgba(60,45,20,.06), 0 8px 24px -12px rgba(60,45,20,.18);
+  --shadow-lg:0 2px 4px rgba(60,45,20,.08), 0 22px 50px -22px rgba(60,45,20,.30);
+  --r:14px; --r-sm:9px;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --display:'Fraunces',Georgia,serif;
+  --sans:'IBM Plex Sans',-apple-system,'Segoe UI',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
+}
+html[data-theme="dark"]{
+  --bg:#14151c; --bg-2:#1b1d27; --panel:#21232f;
+  --ink:#ece5d6; --ink-soft:#a9a290; --ink-faint:#776f5f;
+  --line:#2b2d3a; --line-strong:#3a3d4d;
+  --accent:#e07a4f; --accent-deep:#f0936b; --accent-soft:#3a2820;
+  --good:#5fc08a; --good-soft:#1f3a2c; --bad:#e87b7b; --warn:#d7a martin;
+  --warn:#d7a martin; --warn:#d6a martin;
+  --warn:#d6a martin;
+  --fig-ink:#ece5d6; --fig-grey:#6a6557; --fig-accent:#e07a4f;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px -14px rgba(0,0,0,.6);
+  --shadow-lg:0 2px 6px rgba(0,0,0,.4), 0 26px 60px -26px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--bg); color:var(--ink); font-family:var(--sans);
+  font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased;
+  background-image:
+    radial-gradient(circle at 12% -8%, rgba(189,77,43,.06), transparent 42%),
+    radial-gradient(circle at 100% 0%, rgba(120,110,80,.06), transparent 38%);
+  background-attachment:fixed;
+}
+/* subtle paper grain */
+body::before{
+  content:""; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.5;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/></svg>");
+  mix-blend-mode:multiply;
+}
+html[data-theme="dark"] body::before{mix-blend-mode:screen;opacity:.4}
+::selection{background:var(--accent-soft);color:var(--ink)}
+a{color:var(--accent-deep);text-decoration:none}
+button{font-family:inherit}
+
+/* ============================================================= LAYOUT */
+.shell{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 22px 96px}
+.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:18px;
+  padding:14px 0 13px;margin-bottom:8px;
+  background:linear-gradient(var(--bg) 72%, transparent);}
+.brand{display:flex;align-items:center;gap:11px;cursor:pointer;user-select:none}
+.brand .seal{width:34px;height:34px;flex:none}
+.brand h1{font-family:var(--display);font-weight:600;font-size:1.18rem;letter-spacing:-.01em;line-height:1}
+.brand h1 em{font-style:italic;color:var(--accent);font-weight:500}
+.brand .sub{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;margin-top:3px}
+.spacer{flex:1}
+.nav{display:flex;gap:2px;background:var(--bg-2);border:1px solid var(--line);border-radius:999px;padding:4px}
+.nav button{border:none;background:none;color:var(--ink-soft);font-size:.82rem;font-weight:500;
+  padding:7px 15px;border-radius:999px;cursor:pointer;transition:.18s;white-space:nowrap}
+.nav button:hover{color:var(--ink)}
+.nav button.on{background:var(--ink);color:var(--bg-2);box-shadow:var(--shadow)}
+html[data-theme="dark"] .nav button.on{background:var(--accent);color:#1a1206}
+.iconbtn{width:38px;height:38px;flex:none;border:1px solid var(--line);background:var(--bg-2);
+  border-radius:999px;cursor:pointer;color:var(--ink-soft);display:grid;place-items:center;transition:.18s}
+.iconbtn:hover{color:var(--ink);border-color:var(--line-strong)}
+.iconbtn svg{width:18px;height:18px}
+
+/* ============================================================= HOME */
+.hero{padding:30px 0 18px;display:grid;grid-template-columns:1.4fr .9fr;gap:34px;align-items:end}
+@media(max-width:780px){.hero{grid-template-columns:1fr;gap:20px}}
+.hero .kicker{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
+.hero h2{font-family:var(--display);font-weight:600;font-size:clamp(2.1rem,5vw,3.3rem);line-height:1.02;letter-spacing:-.02em}
+.hero h2 em{font-style:italic;color:var(--accent)}
+.hero p{margin-top:16px;color:var(--ink-soft);font-family:var(--serif);font-size:1.12rem;max-width:46ch}
+.hero-stats{display:flex;gap:26px;justify-self:end}
+@media(max-width:780px){.hero-stats{justify-self:start}}
+.hstat{text-align:right}
+.hstat .n{font-family:var(--display);font-weight:600;font-size:2.4rem;line-height:1;color:var(--ink)}
+.hstat .l{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-top:6px}
+.rule{height:1px;background:linear-gradient(90deg,var(--line-strong),transparent);margin:30px 0 26px}
+
+.sec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:680px){.sec-grid{grid-template-columns:1fr}}
+.sec-card{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+  padding:22px 22px 18px;box-shadow:var(--shadow);overflow:hidden;
+  opacity:0;transform:translateY(14px);animation:rise .6s cubic-bezier(.2,.7,.2,1) forwards}
+.sec-card:nth-child(1){animation-delay:.05s}.sec-card:nth-child(2){animation-delay:.13s}
+.sec-card:nth-child(3){animation-delay:.21s}.sec-card:nth-child(4){animation-delay:.29s}
+@keyframes rise{to{opacity:1;transform:none}}
+.sec-card .idx{position:absolute;top:6px;right:14px;font-family:var(--display);font-weight:600;
+  font-size:5.4rem;line-height:1;color:var(--ink);opacity:.05;pointer-events:none}
+.sec-card .glyph{width:50px;height:50px;margin-bottom:14px;color:var(--accent)}
+.sec-card h3{font-family:var(--display);font-weight:600;font-size:1.35rem;letter-spacing:-.01em}
+.sec-card .tag{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin:3px 0 10px}
+.sec-card p{font-size:.92rem;color:var(--ink-soft);min-height:3.1em}
+.sec-card .meta{display:flex;gap:16px;margin-top:14px;padding-top:13px;border-top:1px dashed var(--line-strong);font-size:.8rem;color:var(--ink-soft)}
+.sec-card .meta b{color:var(--ink);font-variant-numeric:tabular-nums}
+.sec-card .acts{display:flex;gap:9px;margin-top:15px}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg-2);border-radius:var(--r-sm);
+  padding:9px 15px;font-size:.85rem;font-weight:600;cursor:pointer;transition:.16s;letter-spacing:.01em}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn.ghost:hover{border-color:var(--ink);background:var(--bg-2)}
+.btn.accent{background:var(--accent);border-color:var(--accent);color:#fff}
+html[data-theme="dark"] .btn{background:var(--accent);border-color:var(--accent);color:#1a1206}
+html[data-theme="dark"] .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+html[data-theme="dark"] .btn.accent{background:var(--accent);color:#1a1206}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.btn.lg{padding:13px 26px;font-size:.95rem}
+
+.banner{display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between;
+  background:var(--bg-2);border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:var(--r);padding:18px 22px;margin-top:26px}
+.banner h4{font-family:var(--display);font-weight:600;font-size:1.15rem}
+.banner p{font-size:.88rem;color:var(--ink-soft);max-width:52ch}
+.banner .acts{display:flex;gap:10px}
+
+.tips{margin-top:30px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;box-shadow:var(--shadow)}
+.tips h4{font-family:var(--display);font-weight:600;font-size:1.1rem;margin-bottom:6px}
+.tips ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:9px 26px;margin-top:12px}
+@media(max-width:680px){.tips ul{grid-template-columns:1fr}}
+.tips li{font-size:.88rem;color:var(--ink-soft);padding-left:20px;position:relative}
+.tips li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:2px;background:var(--accent);transform:rotate(45deg)}
+
+/* ============================================================= QUESTION VIEW */
+.qhead{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:6px 0 16px}
+.qhead .crumb{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:500}
+.qhead .crumb b{color:var(--accent)}
+.qhead .mode-pill{font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent-deep)}
+.qhead .timer{margin-left:auto;font-family:var(--mono);font-weight:600;font-size:1.05rem;
+  padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg-2);color:var(--ink);font-variant-numeric:tabular-nums}
+.qhead .timer.warn{color:var(--bad);border-color:var(--bad);animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.55}}
+
+.paper{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--shadow-lg);overflow:hidden}
+.paper . qbody, .qbody{padding:30px 34px 28px}
+@media(max-width:620px){.qbody{padding:22px 18px}}
+.qnum{font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--accent);letter-spacing:.02em;margin-bottom:4px}
+.qtopic{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);float:right;margin-top:4px}
+
+.passage{font-family:var(--serif);font-size:1.07rem;line-height:1.72;color:var(--ink);
+  background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-sm);
+  padding:20px 24px;margin-bottom:20px;position:relative;max-width:66ch}
+.passage::before{content:"PASSAGE";position:absolute;top:-9px;left:16px;background:var(--panel);
+  padding:0 8px;font-family:var(--sans);font-size:.62rem;letter-spacing:.18em;color:var(--ink-faint);font-weight:600}
+.context-box{font-size:.97rem;line-height:1.65;background:var(--bg-2);border:1px solid var(--line);
+  border-left:3px solid var(--accent);border-radius:var(--r-sm);padding:16px 20px;margin-bottom:18px;white-space:pre-line}
+.context-box .lbl{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;display:block;margin-bottom:6px}
+
+.stem{font-family:var(--serif);font-size:1.22rem;line-height:1.5;color:var(--ink);margin:4px 0 20px;font-weight:500}
+.stem.q{font-weight:500}
+
+/* charts + figures */
+.viz{margin:6px 0 22px;background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-sm);padding:18px 18px 14px}
+.viz .viz-title{font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:4px;text-align:center}
+.viz .viz-sub{font-size:.68rem;color:var(--ink-faint);text-align:center;margin-bottom:10px;letter-spacing:.04em}
+svg.chart{width:100%;height:auto;display:block;overflow:visible;font-family:var(--mono)}
+.chart text{fill:var(--ink-soft);font-size:11px}
+.chart .axis{stroke:var(--line-strong);stroke-width:1}
+.chart .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:2 3}
+.chart .vlabel{fill:var(--ink);font-weight:600;font-size:10.5px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center;margin-top:10px}
+.legend span{display:inline-flex;align-items:center;gap:7px;font-size:.78rem;color:var(--ink-soft)}
+.legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.dtable{width:100%;border-collapse:collapse;font-size:.9rem}
+.dtable caption{font-size:.8rem;font-weight:600;margin-bottom:8px;color:var(--ink)}
+.dtable th,.dtable td{border:1px solid var(--line);padding:7px 11px;text-align:right;font-variant-numeric:tabular-nums}
+.dtable th{background:var(--bg);font-weight:600;color:var(--ink);font-size:.82rem}
+.dtable td:first-child,.dtable th:first-child{text-align:left;font-weight:500}
+.dtable tbody tr:nth-child(even){background:var(--bg)}
+
+/* inductive figure layouts */
+.fig{width:100%;height:100%;display:block}
+.fig .ln{stroke:var(--fig-ink);stroke-width:3.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.fig .s-none{fill:transparent;stroke:var(--fig-ink);stroke-width:3.2}
+.fig .s-grey{fill:var(--fig-grey);stroke:var(--fig-ink);stroke-width:3.2}
+.fig .s-accent{fill:var(--fig-accent);stroke:var(--fig-ink);stroke-width:3.2}
+.fig .s-ink{fill:var(--fig-ink);stroke:var(--fig-ink);stroke-width:3.2}
+.fig .dot{fill:var(--fig-ink);stroke:none}
+.fig .dot-a{fill:var(--fig-accent);stroke:none}
+.fig .dot-g{fill:var(--fig-grey);stroke:var(--fig-ink);stroke-width:1.5}
+.fig polygon,.fig circle,.fig rect,.fig line,.fig path{vector-effect:non-scaling-stroke}
+.frames{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;margin:4px 0 8px}
+.frame{width:84px;height:84px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:9px}
+.frame.q{display:grid;place-items:center;border-style:dashed;border-color:var(--accent);color:var(--accent);
+  font-family:var(--display);font-size:2.2rem;font-weight:600}
+.arrow-sep{color:var(--ink-faint);font-size:1.4rem}
+.matrix{display:inline-grid;grid-template-columns:repeat(3,84px);gap:10px;margin:4px auto 8px;justify-content:center}
+.mcell{width:84px;height:84px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:9px}
+.mcell.q{display:grid;place-items:center;border-style:dashed;border-color:var(--accent);color:var(--accent);font-family:var(--display);font-size:2.2rem;font-weight:600}
+.matrix-wrap{text-align:center}
+.analogy{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:4px 0 10px}
+.analogy .pair{display:flex;align-items:center;gap:8px}
+.analogy .op{font-family:var(--display);font-size:1.5rem;color:var(--ink-faint)}
+.analogy .frame.sm{width:74px;height:74px}
+
+/* options */
+.opts{display:grid;gap:10px;margin-top:6px}
+.opts.grid{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}
+.opt{display:flex;align-items:center;gap:13px;text-align:left;width:100%;
+  background:var(--bg-2);border:1.5px solid var(--line);border-radius:var(--r-sm);
+  padding:13px 16px;cursor:pointer;transition:.15s;color:var(--ink);font-size:.97rem;line-height:1.4}
+.opt:hover{border-color:var(--line-strong);background:var(--panel);transform:translateX(2px)}
+.opt .bub{width:26px;height:26px;flex:none;border:2px solid var(--line-strong);border-radius:999px;
+  display:grid;place-items:center;font-family:var(--mono);font-weight:600;font-size:.8rem;color:var(--ink-soft);transition:.15s}
+.opt.fig-opt{flex-direction:column;align-items:stretch;gap:10px;padding:14px}
+.opt.fig-opt .figbox{width:100%;aspect-ratio:1;max-width:130px;margin:0 auto}
+.opt.fig-opt .bub{align-self:flex-start}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .bub{border-color:var(--accent);background:var(--accent);color:#fff}
+.opt.correct{border-color:var(--good);background:var(--good-soft)}
+.opt.correct .bub{border-color:var(--good);background:var(--good);color:#fff}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,transparent)}
+.opt.wrong .bub{border-color:var(--bad);background:var(--bad);color:#fff}
+.opt .mark{margin-left:auto;font-weight:600;font-size:.8rem;opacity:0;transition:.2s}
+.opt.correct .mark,.opt.wrong .mark{opacity:1}
+.opt.correct .mark{color:var(--good)}.opt.wrong .mark{color:var(--bad)}
+.opt:disabled{cursor:default}
+.opt:disabled:hover{transform:none}
+
+/* reveal / reasoning */
+.qfoot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:22px}
+.reveal{margin-top:20px;border-top:1px dashed var(--line-strong);padding-top:0;overflow:hidden;
+  max-height:0;opacity:0;transition:max-height .45s ease,opacity .4s ease,padding .4s ease}
+.reveal.show{max-height:1400px;opacity:1;padding-top:20px}
+.verdict{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-weight:600;font-size:1.05rem;margin-bottom:10px}
+.verdict .pin{font-family:var(--mono);font-size:.8rem;padding:3px 10px;border-radius:6px}
+.verdict.ok .pin{background:var(--good-soft);color:var(--good)}
+.verdict.no .pin{background:color-mix(in srgb,var(--bad) 15%,transparent);color:var(--bad)}
+.reasoning{font-family:var(--serif);font-size:1.05rem;line-height:1.68;color:var(--ink)}
+.reasoning .lbl{font-family:var(--sans);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600;display:block;margin-bottom:7px}
+.reasoning b{color:var(--ink);font-weight:600}
+
+/* nav rail / OMR bubble sheet */
+.rail{margin-top:26px;background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.rail .rhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.rail .rhead span{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+.omr{display:flex;flex-wrap:wrap;gap:7px}
+.omr button{width:34px;height:34px;border-radius:999px;border:1.5px solid var(--line-strong);
+  background:var(--panel);color:var(--ink-soft);font-family:var(--mono);font-size:.78rem;font-weight:600;
+  cursor:pointer;transition:.14s;position:relative}
+.omr button:hover{border-color:var(--ink);color:var(--ink)}
+.omr button.cur{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.omr button.done{background:var(--ink);color:var(--bg-2);border-color:var(--ink)}
+html[data-theme="dark"] .omr button.done{background:var(--accent);color:#1a1206;border-color:var(--accent)}
+.omr button.right{background:var(--good);border-color:var(--good);color:#fff}
+.omr button.wrong{background:var(--bad);border-color:var(--bad);color:#fff}
+.omr button.flag::after{content:"";position:absolute;top:-2px;right:-2px;width:9px;height:9px;border-radius:999px;background:var(--warn);border:1.5px solid var(--panel)}
+
+.pager{display:flex;align-items:center;gap:12px;margin-top:22px}
+.pager .pinfo{font-family:var(--mono);font-size:.82rem;color:var(--ink-soft)}
+
+/* results */
+.result-hero{text-align:center;padding:26px 0 8px}
+.result-hero .score{font-family:var(--display);font-weight:600;font-size:clamp(3rem,9vw,5rem);line-height:1;letter-spacing:-.02em}
+.result-hero .score em{font-style:normal;color:var(--accent)}
+.result-hero .band{font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:8px}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:26px 0}
+.rcard{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow)}
+.rcard .rt{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+.rcard .rv{font-family:var(--display);font-weight:600;font-size:1.9rem;margin-top:6px}
+.rcard .bar{height:7px;border-radius:6px;background:var(--line);margin-top:10px;overflow:hidden}
+.rcard .bar i{display:block;height:100%;border-radius:6px;background:var(--accent)}
+
+/* answer key */
+.key-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0 20px}
+.key-controls .seg{display:flex;background:var(--bg-2);border:1px solid var(--line);border-radius:999px;padding:3px}
+.key-controls .seg button{border:none;background:none;padding:6px 13px;border-radius:999px;font-size:.8rem;color:var(--ink-soft);cursor:pointer}
+.key-controls .seg button.on{background:var(--ink);color:var(--bg-2)}
+html[data-theme="dark"] .key-controls .seg button.on{background:var(--accent);color:#1a1206}
+.key-item{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;margin-bottom:12px;box-shadow:var(--shadow)}
+.key-item .kh{display:flex;gap:12px;align-items:baseline;margin-bottom:8px}
+.key-item .kid{font-family:var(--mono);font-size:.78rem;color:var(--accent);font-weight:600}
+.key-item .kans{font-family:var(--mono);font-weight:600;color:var(--good);margin-left:auto;font-size:.85rem}
+.key-item .kstem{font-family:var(--serif);font-size:1.02rem;color:var(--ink)}
+.key-item .kreason{font-size:.92rem;color:var(--ink-soft);margin-top:8px;line-height:1.6}
+.key-sec-title{font-family:var(--display);font-weight:600;font-size:1.5rem;margin:26px 0 14px;display:flex;align-items:center;gap:12px}
+.key-sec-title::after{content:"";flex:1;height:1px;background:var(--line-strong)}
+
+footer{text-align:center;color:var(--ink-faint);font-size:.78rem;margin-top:50px;line-height:1.7}
+footer b{color:var(--ink-soft)}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);z-index:90;
+  background:var(--ink);color:var(--bg-2);padding:11px 20px;border-radius:999px;font-size:.85rem;
+  box-shadow:var(--shadow-lg);opacity:0;transition:.3s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(max-width:640px){
+  .topbar{flex-wrap:wrap;gap:10px 12px;padding-bottom:10px}
+  .brand{order:1}
+  #themeBtn{order:2;margin-left:auto}
+  .spacer{display:none}
+  .nav{order:3;width:100%;overflow-x:auto;justify-content:flex-start;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .nav::-webkit-scrollbar{display:none}
+  .nav button{padding:7px 13px;flex:none}
+  .viz{overflow-x:auto}
+}
+@media print{
+  .topbar,.rail,.pager,.qfoot,.key-controls,.banner,.nav,.iconbtn,footer .noprint{display:none!important}
+  body{background:#fff}
+  body::before{display:none}
+  .key-item,.paper{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand" onclick="go('home')">
+      <svg class="seal" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18.5" stroke="var(--accent)" stroke-width="1.5"/><circle cx="20" cy="20" r="14" stroke="var(--ink)" stroke-width="1" stroke-dasharray="2 2.5"/><path d="M13 21.5l4.5 4.5L28 14" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>
+        <h1>The Aptitude <em>Room</em></h1>
+        <div class="sub">SHL · Managerial Practice</div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <nav class="nav" id="nav"></nav>
+    <button class="iconbtn" id="themeBtn" title="Toggle theme" onclick="toggleTheme()"></button>
+  </header>
+  <main id="app"></main>
+  <footer>
+    <p><b>The Aptitude Room</b> — 80 original practice questions in the SHL managerial style, with fully worked solutions.</p>
+    <p class="noprint">Practice, not prophecy. These are original items written to mirror real SHL formats — not actual test content.</p>
+  </footer>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===================================================================
+   THE APTITUDE ROOM — SHL managerial practice bank (single-file app)
+   Sections: Numerical · Verbal · Inductive · Deductive (20 each)
+   =================================================================== */
+
+/* ------------------------------------------------ INDUCTIVE ENGINE
+   Every abstract-reasoning item is built from a rule, and the correct
+   option is generated BY that rule — so the key is correct by construction.
+*/
+const ENG = (function(){
+  const R = (d)=> (d*Math.PI/180);
+  function polyPts(n,cx,cy,r,rot){let p=[];for(let i=0;i<n;i++){const a=R(-90+rot+i*360/n);p.push((cx+r*Math.cos(a)).toFixed(1)+','+(cy+r*Math.sin(a)).toFixed(1));}return p.join(' ');}
+  const poly =(n,cx,cy,r,rot,cls)=>'<polygon points="'+polyPts(n,cx,cy,r,rot)+'" class="'+cls+'"/>';
+  const circ =(cx,cy,r,cls)=>'<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" class="'+cls+'"/>';
+  const dot  =(cx,cy,cls)=>'<circle cx="'+cx+'" cy="'+cy+'" r="6" class="'+(cls||'dot')+'"/>';
+  const grp  =(rot,inner)=>'<g transform="rotate('+rot+' 50 50)">'+inner+'</g>';
+  const fig  =(inner)=>'<svg viewBox="0 0 100 100" class="fig" preserveAspectRatio="xMidYMid meet">'+inner+'</svg>';
+  const SH   = {3:'triangle',4:'square',5:'pentagon',6:'hexagon',7:'heptagon',8:'octagon'};
+  // N dots evenly on a ring
+  function dotsRing(n,cls){let s='';for(let i=0;i<n;i++){const a=R(-90+i*360/n);s+=dot((50+27*Math.cos(a)).toFixed(1),(50+27*Math.sin(a)).toFixed(1),cls);}return s;}
+  // arrow pointing up, rotated
+  const arrow=(rot,headCls)=>grp(rot,'<line x1="50" y1="76" x2="50" y2="30" class="ln"/><polygon points="50,18 39,40 61,40" class="'+(headCls||'s-ink')+'"/>');
+  // single dial hand pointing up, rotated
+  const hand =(rot)=>grp(rot,'<line x1="50" y1="52" x2="50" y2="16" class="ln"/>')+circ(50,50,5,'s-ink');
+  const CORN = {TL:[30,30],TR:[70,30],BR:[70,70],BL:[30,70],C:[50,50],T:[50,28],B:[50,72],L:[28,50],Rt:[72,50]};
+
+  // spec renderer (shape + rotation + shade + dot count)
+  function spec(s){
+    let i='';const sh=s.shade||'none';
+    if(s.shape==='circle') i+=circ(50,50,30,'s-'+sh);
+    else if(s.shape==='poly') i+=grp(s.rot||0,poly(s.sides,50,50,31,0,'s-'+sh));
+    else if(s.shape==='arrow') i+=arrow(s.rot||0,'s-'+(s.shade||'ink'));
+    else if(s.shape==='hand') i+=hand(s.rot||0);
+    if(s.dots) i+=dotsRing(s.dots,'dot');
+    if(s.corner){const c=CORN[s.corner];i+=dot(c[0],c[1],'dot-a');}
+    return fig(i);
+  }
+  // place correct + distractors deterministically (answer position varies by n)
+  function place(correctSvg,distractorSvgs,n){
+    const arr=[correctSvg].concat(distractorSvgs);
+    const k=n%arr.length, out=new Array(arr.length);
+    for(let i=0;i<arr.length;i++) out[(i+k)%arr.length]=arr[i];
+    return {options:out.map(svg=>({svg})),answerIndex:k};
+  }
+  return {R,poly,circ,dot,grp,fig,SH,dotsRing,arrow,hand,CORN,spec,place,polyPts};
+})();
+
+/* ---- the 20 inductive questions (each returns a normalized object) ---- */
+function buildInductive(){
+  const E=ENG, out=[];
+  let n=0;
+  const push=(o)=>{n++;out.push(Object.assign({id:'IND-'+n,section:'inductive',number:n,type:'inductive'},o));};
+  const series=(specs,ans,dist,stem,reasoning,topic)=>{
+    const frames=specs.map(E.spec);
+    const p=E.place(E.spec(ans),dist.map(E.spec),n+1);
+    return {stem:stem||'Which figure completes the series?',visual:{kind:'inductive',layout:'series',frames},options:p.options,answerIndex:p.answerIndex,reasoning,topic};
+  };
+
+  // 1 — rotation of a single hand, +45° CW
+  push(series(
+    [{shape:'hand',rot:0},{shape:'hand',rot:45},{shape:'hand',rot:90},{shape:'hand',rot:135}],
+    {shape:'hand',rot:180},
+    [{shape:'hand',rot:225},{shape:'hand',rot:90},{shape:'hand',rot:270}],
+    null,'The hand turns <b>45° clockwise</b> each step (0°, 45°, 90°, 135°). The next position is <b>180°</b> — pointing straight down.','Rotation'));
+
+  // 2 — dot count +1
+  push(series(
+    [{shape:'circle',shade:'none',dots:2},{shape:'circle',shade:'none',dots:3},{shape:'circle',shade:'none',dots:4},{shape:'circle',shade:'none',dots:5}],
+    {shape:'circle',shade:'none',dots:6},
+    [{shape:'circle',shade:'none',dots:5},{shape:'circle',shade:'none',dots:7},{shape:'circle',shade:'none',dots:4}],
+    null,'The number of dots increases by one each step (2, 3, 4, 5). The next figure must hold <b>6 dots</b>.','Quantity'));
+
+  // 3 — polygon sides +1
+  push(series(
+    [{shape:'poly',sides:3,shade:'none'},{shape:'poly',sides:4,shade:'none'},{shape:'poly',sides:5,shade:'none'},{shape:'poly',sides:6,shade:'none'}],
+    {shape:'poly',sides:7,shade:'none'},
+    [{shape:'poly',sides:6,shade:'none'},{shape:'poly',sides:8,shade:'none'},{shape:'poly',sides:5,shade:'none'}],
+    null,'Each shape gains one side: triangle (3) → square (4) → pentagon (5) → hexagon (6). The next is a <b>heptagon (7 sides)</b>.','Progression'));
+
+  // 4 — shade cycle none→grey→accent→ink→(none)
+  push(series(
+    [{shape:'poly',sides:4,shade:'none'},{shape:'poly',sides:4,shade:'grey'},{shape:'poly',sides:4,shade:'accent'},{shape:'poly',sides:4,shade:'ink'}],
+    {shape:'poly',sides:4,shade:'none'},
+    [{shape:'poly',sides:4,shade:'grey'},{shape:'poly',sides:4,shade:'accent'},{shape:'poly',sides:4,shade:'ink'}],
+    null,'The fill cycles white → grey → orange → black, then repeats. After black the cycle restarts at <b>white (unfilled)</b>.','Shading cycle'));
+
+  // 5 — dot moves clockwise around the four corners (custom render: square outline + corner dot)
+  (function(){
+    const sq=()=>'<rect x="22" y="22" width="56" height="56" rx="4" class="s-none"/>';
+    const cell=(corner)=>{const c=E.CORN[corner];return E.fig(sq()+E.dot(c[0],c[1],'dot-a'));};
+    const order=['TL','TR','BR','BL'];
+    const frames=order.map(cell);
+    const correct=cell('TL');
+    const dist=[cell('TR'),cell('BR'),cell('C')];
+    const p=E.place(correct,dist,n+1);
+    push({stem:'Which figure continues the series?',visual:{kind:'inductive',layout:'series',frames},options:p.options,answerIndex:p.answerIndex,
+      reasoning:'The dot travels <b>clockwise</b> around the corners: top-left → top-right → bottom-right → bottom-left. After the bottom-left corner it returns to the <b>top-left</b>.',topic:'Position'});
+  })();
+
+  // 6 — combined: hand rotates +90° CW AND dot count +1
+  push(series(
+    [{shape:'hand',rot:0,dots:1},{shape:'hand',rot:90,dots:2},{shape:'hand',rot:180,dots:3},{shape:'hand',rot:270,dots:4}],
+    {shape:'hand',rot:0,dots:5},
+    [{shape:'hand',rot:0,dots:4},{shape:'hand',rot:90,dots:5},{shape:'hand',rot:270,dots:5}],
+    null,'Two rules run at once: the hand rotates <b>90° clockwise</b> (0→90→180→270) and the dots increase by <b>one</b> each step. Next: hand back to the top (360°≡0°) with <b>5 dots</b>.','Two rules'));
+
+  // 7 — shape alternates square/circle, dots +1
+  (function(){
+    const mk=(shape,d)=>E.fig((shape==='square'?E.poly(4,50,50,33,0,'s-none'):E.circ(50,50,31,'s-none'))+E.dotsRing(d,'dot'));
+    const frames=[mk('square',1),mk('circle',2),mk('square',3),mk('circle',4)];
+    const correct=mk('square',5);
+    const dist=[mk('circle',5),mk('square',4),mk('square',6)];
+    const p=E.place(correct,dist,n+1);
+    push({stem:'Which figure completes the series?',visual:{kind:'inductive',layout:'series',frames},options:p.options,answerIndex:p.answerIndex,
+      reasoning:'The outline alternates <b>square, circle, square, circle</b> — so the next is a square. The dot count rises by one (1, 2, 3, 4), giving <b>5 dots</b>. The answer is a <b>square with 5 dots</b>.',topic:'Two rules'});
+  })();
+
+  // 8 — arrow rotates +45° CW; head fill alternates ink / none
+  push(series(
+    [{shape:'arrow',rot:0,shade:'ink'},{shape:'arrow',rot:45,shade:'none'},{shape:'arrow',rot:90,shade:'ink'},{shape:'arrow',rot:135,shade:'none'}],
+    {shape:'arrow',rot:180,shade:'ink'},
+    [{shape:'arrow',rot:180,shade:'none'},{shape:'arrow',rot:135,shade:'ink'},{shape:'arrow',rot:225,shade:'ink'}],
+    null,'The arrow rotates <b>45° clockwise</b> each step while its head <b>alternates filled / hollow</b>. After a hollow head at 135° comes a <b>filled head at 180°</b>.','Two rules'));
+
+  // ---- matrices ----
+  const matrix=(cells,missingIdx,correct,dist,stem,reasoning,topic)=>{
+    const rendered=cells.map((c,i)=> i===missingIdx? null : E.spec(c));
+    const p=E.place(E.spec(correct),dist.map(E.spec),n+1);
+    return {stem:stem||'Which figure completes the grid?',visual:{kind:'inductive',layout:'matrix',cells:rendered},options:p.options,answerIndex:p.answerIndex,reasoning,topic};
+  };
+
+  // 9 — columns add a side (3,4,5); rows deepen shade (none,grey,ink)
+  push(matrix(
+    [{shape:'poly',sides:3,shade:'none'},{shape:'poly',sides:4,shade:'none'},{shape:'poly',sides:5,shade:'none'},
+     {shape:'poly',sides:3,shade:'grey'},{shape:'poly',sides:4,shade:'grey'},{shape:'poly',sides:5,shade:'grey'},
+     {shape:'poly',sides:3,shade:'ink'}, {shape:'poly',sides:4,shade:'ink'}, {shape:'poly',sides:5,shade:'ink'}],
+    8,{shape:'poly',sides:5,shade:'ink'},
+    [{shape:'poly',sides:5,shade:'grey'},{shape:'poly',sides:6,shade:'ink'},{shape:'poly',sides:4,shade:'ink'}],
+    null,'Across each row the shape gains a side (triangle → square → pentagon); down each column the fill darkens (white → grey → black). The missing cell sits in the <b>pentagon</b> column and the <b>black</b> row: a <b>solid black pentagon</b>.','Matrix'));
+
+  // 10 — columns rotate the hand (0,45,90); rows add a dot (1,2,3)
+  push(matrix(
+    [{shape:'hand',rot:0,dots:1},{shape:'hand',rot:45,dots:1},{shape:'hand',rot:90,dots:1},
+     {shape:'hand',rot:0,dots:2},{shape:'hand',rot:45,dots:2},{shape:'hand',rot:90,dots:2},
+     {shape:'hand',rot:0,dots:3},{shape:'hand',rot:45,dots:3},{shape:'hand',rot:90,dots:3}],
+    8,{shape:'hand',rot:90,dots:3},
+    [{shape:'hand',rot:45,dots:3},{shape:'hand',rot:90,dots:2},{shape:'hand',rot:0,dots:3}],
+    null,'Along each row the hand turns 45° clockwise (0°, 45°, 90°); down each column the dot count rises (1, 2, 3). The last cell needs the <b>90° hand with 3 dots</b>.','Matrix'));
+
+  // 11 — columns change shape (circle, square, triangle); rows add count (1,2,3)
+  (function(){
+    const shp=['circle','poly','poly'], sides=[0,4,3];
+    const mk=(ci,cnt)=>{const inner=(ci===0?E.circ(50,50,12,'s-none'):'');return null;};
+    // build explicit cells with count of small shapes
+    function multi(ci,cnt){
+      let s='';const positions=cnt===1?[[50,50]]:cnt===2?[[36,50],[64,50]]:[[50,33],[36,64],[64,64]];
+      for(const[px,py]of positions){
+        if(ci===0)s+=E.circ(px,py,11,'s-none');
+        else if(ci===1)s+=E.poly(4,px,py,13,0,'s-none');
+        else s+=E.poly(3,px,py,13,0,'s-none');
+      }
+      return E.fig(s);
+    }
+    const cells=[multi(0,1),multi(1,1),multi(2,1),multi(0,2),multi(1,2),multi(2,2),multi(0,3),multi(1,3),null];
+    const correct=multi(2,3);
+    const dist=[multi(1,3),multi(2,2),multi(0,3)];
+    const p=E.place(correct,dist,n+1);
+    push({stem:'Which figure completes the grid?',visual:{kind:'inductive',layout:'matrix',cells},options:p.options,answerIndex:p.answerIndex,
+      reasoning:'Each column fixes a shape (circle, square, triangle) and each row fixes a quantity (1, 2, 3). The missing cell is the <b>triangle</b> column and the <b>three</b> row, so it shows <b>three triangles</b>.',topic:'Matrix'});
+  })();
+
+  // 12 — columns rotate arrow (0,90,180); rows shade head (none,grey,ink)
+  push(matrix(
+    [{shape:'arrow',rot:0,shade:'none'},{shape:'arrow',rot:90,shade:'none'},{shape:'arrow',rot:180,shade:'none'},
+     {shape:'arrow',rot:0,shade:'grey'},{shape:'arrow',rot:90,shade:'grey'},{shape:'arrow',rot:180,shade:'grey'},
+     {shape:'arrow',rot:0,shade:'ink'}, {shape:'arrow',rot:90,shade:'ink'}, {shape:'arrow',rot:180,shade:'ink'}],
+    8,{shape:'arrow',rot:180,shade:'ink'},
+    [{shape:'arrow',rot:180,shade:'grey'},{shape:'arrow',rot:90,shade:'ink'},{shape:'arrow',rot:0,shade:'ink'}],
+    null,'Across each row the arrow rotates 90° clockwise (up → right → down); down each column the head darkens (hollow → grey → black). The final cell is a <b>downward arrow with a solid black head</b>.','Matrix'));
+
+  // 13 — superimposition: third column = first two overlaid
+  (function(){
+    const vline='<line x1="50" y1="22" x2="50" y2="78" class="ln"/>';
+    const hline='<line x1="22" y1="50" x2="78" y2="50" class="ln"/>';
+    const circle=E.circ(50,50,26,'s-none');
+    const square=E.poly(4,50,50,30,0,'s-none');
+    const tri=E.poly(3,50,50,30,0,'s-none');
+    const dotC=E.dot(50,50,'dot');
+    const cells=[
+      E.fig(vline),E.fig(hline),E.fig(vline+hline),
+      E.fig(circle),E.fig(square),E.fig(circle+square),
+      E.fig(tri),E.fig(dotC),null];
+    const correct=E.fig(tri+dotC);
+    const dist=[E.fig(tri),E.fig(square+dotC),E.fig(circle+dotC)];
+    const p=E.place(correct,dist,n+1);
+    push({stem:'Which figure completes the grid?',visual:{kind:'inductive',layout:'matrix',cells},options:p.options,answerIndex:p.answerIndex,
+      reasoning:'In every row the third cell is the <b>two earlier cells superimposed</b> (vertical + horizontal line = a cross; circle + square = both). The bottom row is a triangle and a centre dot, so the answer is a <b>triangle with a dot at its centre</b>.',topic:'Superimposition'});
+  })();
+
+  // ---- odd-one-out ----
+  const odd=(cells,answerIndex,stem,reasoning,topic)=>({stem:stem||'Which figure is the odd one out?',visual:{kind:'inductive',layout:'oddoneout'},options:cells.map(svg=>({svg})),answerIndex,reasoning,topic});
+
+  // 14 — dots should equal sides; one breaks the rule
+  (function(){
+    const mk=(sides,dots)=>E.fig(E.poly(sides,50,50,33,0,'s-none')+E.dotsRing(dots,'dot'));
+    const cells=[mk(3,3),mk(4,4),mk(5,5),mk(4,3),mk(6,6)]; // index 3 breaks (square w/ 3 dots)
+    push(odd(cells,3,null,'In four figures the <b>number of dots equals the number of sides</b> (triangle-3, square-4, pentagon-5, hexagon-6). The odd one is the <b>square holding only 3 dots</b> — its dot count does not match its sides.','Odd one out'));
+  })();
+
+  // 15 — dot always on the right of the cell; rotating arrow is a distraction; one has dot on the left
+  (function(){
+    const mk=(rot,side)=>E.fig(E.arrow(rot,'s-ink')+E.dot(side==='R'?72:28,50,'dot-a'));
+    const cells=[mk(0,'R'),mk(90,'R'),mk(180,'R'),mk(135,'L'),mk(270,'R')]; // index 3 odd (dot on left)
+    push(odd(cells,3,null,'The arrows point in different directions — that rotation is a deliberate distraction. The constant rule is that the accent dot sits on the <b>right-hand side of the cell</b>. In one figure the dot sits on the <b>left</b>, so it is the odd one out.','Reflection'));
+  })();
+
+  // 16 — four even-sided polygons (all visually distinct), one odd-sided
+  (function(){
+    const mk=(s,rot)=>E.fig(E.poly(s,50,50,33,rot||0,'s-grey'));
+    const cells=[mk(4,0),mk(4,45),mk(6,0),mk(8,0),mk(5,0)]; // square, diamond, hexagon, octagon, [pentagon=odd]
+    push(odd(cells,4,null,'Four shapes have an <b>even</b> number of sides — a square and a diamond (both 4 sides), a hexagon (6) and an octagon (8). The <b>pentagon (5 sides)</b> is the only odd-sided figure, so it is the odd one out.','Odd one out'));
+  })();
+
+  // 17 — varied grey shapes each with a black dot; one reverses the shading
+  (function(){
+    const mk=(sides)=>E.fig(E.poly(sides,50,50,32,0,'s-grey')+E.dot(50,50,'dot'));
+    const inv=E.fig(E.poly(4,50,50,32,0,'s-ink')+E.dot(50,50,'dot-g'));
+    const cells=[mk(3),mk(4),mk(5),inv,mk(6)]; // index 3 inverted shading
+    push(odd(cells,3,null,'The shapes differ (triangle, square, pentagon, hexagon), but four share one rule: a <b>grey shape carrying a black centre dot</b>. One figure <b>reverses the shading</b> — a black shape with a grey dot — so it is the odd one out.','Shading'));
+  })();
+
+  // ---- analogies (A:B :: C:?) ----
+  const analogy=(a,b,c,correct,dist,reasoning,topic)=>{
+    const p=E.place(E.spec(correct),dist.map(E.spec),n+1);
+    return {stem:'Figure A is to Figure B as Figure C is to&nbsp;?',visual:{kind:'inductive',layout:'analogy',a:E.spec(a),b:E.spec(b),c:E.spec(c)},options:p.options,answerIndex:p.answerIndex,reasoning,topic};
+  };
+
+  // 18 — relation: rotate 90° CW
+  push(analogy(
+    {shape:'arrow',rot:0,shade:'ink'},{shape:'arrow',rot:90,shade:'ink'},
+    {shape:'hand',rot:0},{shape:'hand',rot:90},
+    [{shape:'hand',rot:180},{shape:'hand',rot:270},{shape:'hand',rot:45}],
+    'A → B is a <b>90° clockwise rotation</b> (the arrow turns from up to right). Applying the same turn to the upward hand in C gives a hand pointing <b>right (90°)</b>.','Analogy'));
+
+  // 19 — relation: fill black + add a dot
+  push(analogy(
+    {shape:'poly',sides:4,shade:'none'},{shape:'poly',sides:4,shade:'ink',dots:1},
+    {shape:'poly',sides:3,shade:'none'},{shape:'poly',sides:3,shade:'ink',dots:1},
+    [{shape:'poly',sides:3,shade:'none',dots:1},{shape:'poly',sides:3,shade:'ink'},{shape:'poly',sides:4,shade:'ink',dots:1}],
+    'A → B does two things: the shape is <b>filled black</b> and a <b>single dot</b> is added. Doing the same to the hollow triangle in C yields a <b>solid black triangle with one dot</b>.','Analogy'));
+
+  // 20 — relation: gain a side + shade grey
+  push(analogy(
+    {shape:'poly',sides:3,shade:'none'},{shape:'poly',sides:4,shade:'grey'},
+    {shape:'poly',sides:5,shade:'none'},{shape:'poly',sides:6,shade:'grey'},
+    [{shape:'poly',sides:6,shade:'none'},{shape:'poly',sides:5,shade:'grey'},{shape:'poly',sides:7,shade:'grey'}],
+    'A → B <b>adds one side</b> (triangle → square) and <b>shades the shape grey</b>. Applying that to the hollow pentagon in C gives a <b>grey hexagon</b>.','Analogy'));
+
+  return out;
+}
+
+/* ------------------------------------------------ SVG CHART RENDERER */
+const PAL=['#bd4d2b','#2b6c70','#c79a36','#4f6d9c','#8c4a6b','#5f7d3f'];
+function niceMax(v){if(v<=0)return 1;const p=Math.pow(10,Math.floor(Math.log10(v)));const f=v/p;let nf=f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10;return nf*p;}
+function fmtNum(v){const a=Math.abs(v);if(a>=1000)return (v).toLocaleString('en-US');if(a%1!==0)return v.toFixed(a<10?2:1);return ''+v;}
+function legend(series){return '<div class="legend">'+series.map((s,i)=>'<span><i style="background:'+PAL[i%PAL.length]+'"></i>'+esc(s.name)+'</span>').join('')+'</div>';}
+
+function renderChart(c){
+  const t=c.chartType;
+  let body='';
+  if(t==='table'){
+    let h='<table class="dtable">';
+    if(c.dataTitle)h+='<caption>'+esc(c.dataTitle)+'</caption>';
+    if(c.tableHeaders){h+='<thead><tr>'+c.tableHeaders.map(x=>'<th>'+esc(x)+'</th>').join('')+'</tr></thead>';}
+    h+='<tbody>'+(c.tableRows||[]).map(r=>'<tr>'+r.map((x,i)=>'<td>'+esc(x)+'</td>').join('')+'</tr>').join('')+'</tbody></table>';
+    return '<div class="viz">'+h+'</div>';
+  }
+  const W=580,H=300,L=52,Rp=18,Tp=14,B=46, iw=W-L-Rp, ih=H-Tp-B;
+  const labels=c.labels||[], series=c.series||[];
+  if(t==='pie'){
+    const vals=(series[0]&&series[0].values)||[]; const total=vals.reduce((a,b)=>a+b,0)||1;
+    let ang=-90, cx=150,cy=150,r=120, slices='';
+    vals.forEach((v,i)=>{const a0=ang, a1=ang+v/total*360; ang=a1;
+      const x0=cx+r*Math.cos(ENG.R(a0)),y0=cy+r*Math.sin(ENG.R(a0));
+      const x1=cx+r*Math.cos(ENG.R(a1)),y1=cy+r*Math.sin(ENG.R(a1));
+      const large=(a1-a0)>180?1:0;
+      slices+='<path d="M'+cx+','+cy+' L'+x0.toFixed(1)+','+y0.toFixed(1)+' A'+r+','+r+' 0 '+large+' 1 '+x1.toFixed(1)+','+y1.toFixed(1)+' Z" fill="'+PAL[i%PAL.length]+'" stroke="var(--panel)" stroke-width="2"/>';
+      const mid=(a0+a1)/2, lx=cx+r*0.62*Math.cos(ENG.R(mid)), ly=cy+r*0.62*Math.sin(ENG.R(mid));
+      const pct=Math.round(v/total*100); if(pct>=6)slices+='<text x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'" text-anchor="middle" dy=".35em" fill="#fff" style="font-weight:600;font-size:12px">'+pct+'%</text>';
+    });
+    body='<svg class="chart" viewBox="0 0 300 300">'+slices+'</svg>';
+    return '<div class="viz">'+title(c)+body+legend(labels.map((l,i)=>({name:l})))+'</div>';
+  }
+  // numeric axes for bar/line/grouped/stacked
+  let maxV=0;
+  if(t==='stackedBar'){maxV=Math.max.apply(null,labels.map((_,li)=>series.reduce((s,se)=>s+(se.values[li]||0),0)));}
+  else{series.forEach(se=>se.values.forEach(v=>{if(v>maxV)maxV=v;}));}
+  maxV=niceMax(maxV); const steps=5;
+  const x=(i)=>L+ (labels.length>1? i*iw/(labels.length-(t==='line'?1:0)) : iw/2);
+  const y=(v)=>Tp+ih-(v/maxV)*ih;
+  let grid='';for(let s=0;s<=steps;s++){const gv=maxV*s/steps, gy=Tp+ih-(s/steps)*ih;grid+='<line class="grid" x1="'+L+'" y1="'+gy.toFixed(1)+'" x2="'+(W-Rp)+'" y2="'+gy.toFixed(1)+'"/><text x="'+(L-8)+'" y="'+(gy+3).toFixed(1)+'" text-anchor="end">'+fmtNum(gv)+'</text>';}
+  grid+='<line class="axis" x1="'+L+'" y1="'+Tp+'" x2="'+L+'" y2="'+(Tp+ih)+'"/><line class="axis" x1="'+L+'" y1="'+(Tp+ih)+'" x2="'+(W-Rp)+'" y2="'+(Tp+ih)+'"/>';
+  let marks='';
+  const bw= labels.length? iw/labels.length : iw; // band width
+  if(t==='bar'){
+    const se=series[0]||{values:[]}; const w=Math.min(46,bw*0.55);
+    se.values.forEach((v,i)=>{const bx=L+bw*i+bw/2-w/2, by=y(v);
+      marks+='<rect x="'+bx.toFixed(1)+'" y="'+by.toFixed(1)+'" width="'+w.toFixed(1)+'" height="'+(Tp+ih-by).toFixed(1)+'" rx="2" fill="'+PAL[0]+'"/>';
+      marks+='<text class="vlabel" x="'+(bx+w/2).toFixed(1)+'" y="'+(by-5).toFixed(1)+'" text-anchor="middle">'+fmtNum(v)+'</text>';});
+  } else if(t==='groupedBar'){
+    const gw=bw*0.7, w=gw/series.length;
+    labels.forEach((_,i)=>{series.forEach((se,si)=>{const v=se.values[i]||0;const bx=L+bw*i+(bw-gw)/2+w*si, by=y(v);
+      marks+='<rect x="'+bx.toFixed(1)+'" y="'+by.toFixed(1)+'" width="'+(w-2).toFixed(1)+'" height="'+(Tp+ih-by).toFixed(1)+'" rx="1.5" fill="'+PAL[si%PAL.length]+'"/>';});});
+  } else if(t==='stackedBar'){
+    const w=Math.min(46,bw*0.55);
+    labels.forEach((_,i)=>{let acc=0;series.forEach((se,si)=>{const v=se.values[i]||0;const by=y(acc+v),bh=(y(acc)-y(acc+v));acc+=v;
+      marks+='<rect x="'+(L+bw*i+bw/2-w/2).toFixed(1)+'" y="'+by.toFixed(1)+'" width="'+w.toFixed(1)+'" height="'+bh.toFixed(1)+'" fill="'+PAL[si%PAL.length]+'"/>';});});
+  } else if(t==='line'){
+    series.forEach((se,si)=>{let d='';se.values.forEach((v,i)=>{const px=x(i),py=y(v);d+=(i?'L':'M')+px.toFixed(1)+','+py.toFixed(1)+' ';});
+      marks+='<path d="'+d+'" fill="none" stroke="'+PAL[si%PAL.length]+'" stroke-width="2.5" stroke-linejoin="round"/>';
+      se.values.forEach((v,i)=>{marks+='<circle cx="'+x(i).toFixed(1)+'" cy="'+y(v).toFixed(1)+'" r="3.5" fill="'+PAL[si%PAL.length]+'"/>';});});
+  }
+  let xl='';labels.forEach((l,i)=>{const cx = t==='line'? x(i): L+bw*i+bw/2; xl+='<text x="'+cx.toFixed(1)+'" y="'+(Tp+ih+18)+'" text-anchor="middle">'+esc(shortLab(l))+'</text>';});
+  body='<svg class="chart" viewBox="0 0 '+W+' '+H+'">'+grid+marks+xl+(c.unit?'<text x="'+L+'" y="'+(Tp-3)+'" fill="var(--ink-faint)" style="font-size:10px">'+esc(c.unit)+'</text>':'')+'</svg>';
+  const leg = series.length>1? legend(series):'';
+  return '<div class="viz">'+title(c)+body+leg+'</div>';
+}
+function title(c){let h='';if(c.dataTitle)h+='<div class="viz-title">'+esc(c.dataTitle)+'</div>';if(c.unit)h+='<div class="viz-sub">figures in '+esc(c.unit)+'</div>';return h;}
+function shortLab(l){l=''+l;return l.length>10?l.slice(0,9)+'…':l;}
+
+/* ------------------------------------------------ DATA (3 sections injected) */
+const NUMERICAL_DATA = [{"stem":"Helmsworth Tooling Ltd manufactures the CX-7 hydraulic clamp. Using the unit economics and the annual fixed costs allocated to the product line shown below, how many units of the CX-7 must be sold for the product line to break even (profit = £0)?","topic":"Contribution margin / break-even","dataTitle":"CX-7 hydraulic clamp — unit economics and allocated fixed costs","chartType":"table","unit":"units","tableHeaders":["Item","Value (£)"],"tableRows":[["Selling price per unit","48.00"],["Variable cost per unit","31.50"],["Annual fixed costs allocated to line","247,500.00"]],"options":["5,156 units","7,857 units","15,000 units","18,750 units"],"answerIndex":2,"reasoning":"Contribution margin per unit = price − variable cost = 48.00 − 31.50 = £16.50. Break-even units = fixed costs ÷ CM per unit = 247,500 ÷ 16.50 = 15,000 units. Distractor 5,156 wrongly divides fixed costs by the selling price (247,500/48 = 5,156.25); 7,857 wrongly divides by the variable cost (247,500/31.50 = 7,857.1). Both ignore that break-even is driven by contribution, not by price or cost alone. 18,750 is a planted round-ish value with no valid derivation."},{"stem":"The table shows each firm's share of the UK industrial-coatings market in 2023 and 2024. By what percentage did Brennan Coatings' market share increase from 2023 to 2024 (i.e. the relative increase, not the change in percentage points)?","topic":"Percentage change vs percentage points / market share","dataTitle":"UK industrial-coatings market share by firm","chartType":"groupedBar","unit":"%","labels":["Brennan","Caldwell","Pendrey","Others"],"series":[{"name":"2023 share (%)","values":[18,24,15,43]},{"name":"2024 share (%)","values":[21.6,22,16.4,40]}],"options":["3.6%","16.67%","20.0%","21.6%"],"answerIndex":2,"reasoning":"Relative percentage increase = (new − old)/old × 100 = (21.6 − 18.0)/18.0 × 100 = 3.6/18.0 × 100 = 20.0%. Distractor 3.6% is the percentage-point change (21.6 − 18.0), not the relative increase. Distractor 16.67% uses the new value as the base (3.6/21.6 × 100), the classic wrong-base error. 21.6% simply restates the 2024 figure."},{"stem":"Northgate Logistics reported the annual revenues below. Calculate the compound annual growth rate (CAGR) of revenue over the full period from 2021 to 2024.","topic":"CAGR / compound growth","dataTitle":"Northgate Logistics — annual revenue","chartType":"line","unit":"%","labels":["2021","2022","2023","2024"],"series":[{"name":"Revenue (£m)","values":[120,141.6,167.09,197.16]}],"options":["13.22%","18.0%","21.43%","64.3%"],"answerIndex":1,"reasoning":"CAGR spans n = 3 growth periods (2021→2022→2023→2024). CAGR = (end/start)^(1/n) − 1 = (197.16/120)^(1/3) − 1 = (1.6430)^(0.3333) − 1 = 1.1800 − 1 = 18.0% (the series compounds at ~18% each year: 141.6/120 = 1.180, 167.09/141.6 = 1.180, 197.16/167.09 = 1.180). Distractor 64.3% is the total cumulative growth over the period [(197.16 − 120)/120 = 64.3%]. Distractor 21.43% divides that total growth by 3 (a simple average, ignoring compounding). 13.22% wrongly uses 4 years instead of 3 (off-by-one period error: (1.6430)^(1/4) − 1)."},{"stem":"Saxby Interiors invoiced a German client EUR 420,000. The amount is converted to sterling at the rate shown, and the bank charges a 1.75% commission on the converted (sterling) amount. How much will Saxby actually receive in GBP, to the nearest pound?","topic":"Currency conversion with commission","dataTitle":"Conversion terms — EUR invoice to GBP","chartType":"table","unit":"£","tableHeaders":["Item","Value"],"tableRows":[["Invoice amount (EUR)","420,000.00"],["Exchange rate (GBP per 1 EUR)","0.8650"],["Bank commission on converted amount","1.75%"]],"options":["£356,942","£363,300","£370,121","£477,052"],"answerIndex":0,"reasoning":"Converted gross = 420,000 × 0.8650 = £363,300. Commission = 1.75% of £363,300 = £6,357.75. Net received = 363,300 − 6,357.75 = £356,942.25 ≈ £356,942. Distractor £363,300 forgets the commission entirely. Distractor £370,121 sits above the gross conversion — the error of treating the 1.75% as an uplift added to the converted amount rather than a deduction from it. Distractor £477,052 divides by the rate instead of multiplying (420,000/0.8650 = 485,549, then deducts the 1.75% fee), inverting the conversion direction."},{"stem":"Veridian Group has four operating divisions. Using each division's revenue and operating margin below, calculate the group's blended (overall) operating margin.","topic":"Weighted average margin","dataTitle":"Veridian Group — divisional revenue and operating margin","chartType":"table","unit":"%","tableHeaders":["Division","Revenue (£m)","Operating margin (%)"],"tableRows":[["North","85.0","22.0"],["South","140.0","15.0"],["East","60.0","28.0"],["West","115.0","19.0"]],"options":["19.59%","20.25%","21.0%","23.5%"],"answerIndex":0,"reasoning":"Blended margin = total operating profit ÷ total revenue. Profit by division = revenue × margin: North 85 × 0.22 = 18.70; South 140 × 0.15 = 21.00; East 60 × 0.28 = 16.80; West 115 × 0.19 = 21.85. Total profit = 18.70 + 21.00 + 16.80 + 21.85 = 78.35; total revenue = 85 + 140 + 60 + 115 = 400. Blended margin = 78.35/400 × 100 = 19.59%. Distractor 21.0% is the simple (unweighted) average of the four margins [(22 + 15 + 28 + 19)/4], the planted error for ignoring division size. The correct figure is pulled below the simple average because the lowest-margin division (South, 15%) carries the largest revenue weight. 20.25% and 23.5% have no valid derivation."},{"stem":"The table compares actual spend against budget for four cost lines at Marlowe Foods last quarter. For the cost line with the largest ADVERSE variance (actual exceeding budget) expressed as a percentage of its budget, what is that percentage?","topic":"Variance to budget","dataTitle":"Marlowe Foods — actual vs budget by cost line (£'000)","chartType":"groupedBar","unit":"%","labels":["Materials","Labour","Logistics","Overheads"],"series":[{"name":"Actual (£'000)","values":[1240,980,415,560]},{"name":"Budget (£'000)","values":[1180,1015,380,575]}],"options":["5.08%","9.21%","15.79%","35.0%"],"answerIndex":1,"reasoning":"Adverse variance means actual > budget. Materials: (1240 − 1180)/1180 = +5.08% (adverse); Logistics: (415 − 380)/380 = +9.21% (adverse). Labour (980 vs 1015) and Overheads (560 vs 575) are favourable (actual below budget), so they are excluded. The largest adverse variance as a % of budget is Logistics at 9.21%. Distractor 5.08% is Materials, which has the larger absolute variance (£60k vs £35k) but a smaller percentage — the trap is comparing pound amounts instead of percentages. Distractor 35.0% is Logistics' absolute variance in £'000 (415 − 380 = 35) misread as a percentage. 15.79% has no valid derivation."},{"stem":"Using the two tables below, identify the region with the highest revenue per employee and the region with the lowest, then calculate the difference in revenue per employee between them. Give the answer in £ thousand per employee.","topic":"Multi-table cross-reference / per-unit metric","dataTitle":"Regional revenue (£m) and headcount","chartType":"table","unit":"£k per employee","tableHeaders":["Region","Revenue (£m)","Headcount"],"tableRows":[["UK","312.0","1,450"],["Germany","268.0","1,180"],["France","195.0","1,020"],["Spain","142.0","760"]],"options":["£36.0k","£40.3k","£170.0k","£227.1k"],"answerIndex":1,"reasoning":"Revenue per employee = revenue ÷ headcount: UK 312,000,000/1,450 = £215,172; Germany 268,000,000/1,180 = £227,119 (highest); France 195,000,000/1,020 = £191,176; Spain 142,000,000/760 = £186,842 (lowest). Difference = 227,119 − 186,842 = £40,277 ≈ £40.3k. Distractor £36.0k pairs the highest (Germany) against France instead of the true lowest, Spain (227,119 − 191,176 = £35.9k) — wrong 'lowest' region. Distractor £170.0k ignores headcount entirely: it is the max−min of raw revenue in £m (312 − 142 = 170) mislabelled as £k per employee. Distractor £227.1k is Germany's value alone, the trap of reporting the maximum instead of the spread. The key requires pairing each revenue with its own headcount across the two columns before differencing."},{"stem":"For its product portfolio below, Calderbank plc wants to focus on its higher-growth lines. Considering ONLY the products whose year-on-year revenue growth exceeded 10%, what is their combined revenue as a percentage of the total portfolio revenue?","topic":"Conditional / threshold-filtered calculation","dataTitle":"Calderbank plc — product revenue and YoY growth","chartType":"table","unit":"%","tableHeaders":["Product","YoY growth (%)","Revenue (£m)"],"tableRows":[["Alpha","12.5","48.0"],["Beta","8.0","62.0"],["Gamma","15.2","35.0"],["Delta","4.5","90.0"],["Epsilon","22.0","27.0"],["Zeta","9.8","55.0"]],"options":["34.7%","45.6%","65.3%","71.6%"],"answerIndex":0,"reasoning":"Total portfolio revenue = 48 + 62 + 35 + 90 + 27 + 55 = £317m. Products with growth > 10%: Alpha (12.5%), Gamma (15.2%), Epsilon (22.0%). Their combined revenue = 48 + 35 + 27 = £110m. Share = 110/317 × 100 = 34.70%. Distractor 65.3% is the complement (100 − 34.7 = 65.3%), i.e. the revenue share of the products that did NOT exceed 10% — selecting the wrong side of the filter. Distractor 71.6% applies the wrong threshold (> 5%, adding Beta and Zeta: 110 + 62 + 55 = 227; 227/317 = 71.6%). Distractor 45.6% sums a wrong subset (Delta £90m + Zeta £55m = £145m; 145/317 = 45.7%). The condition must be applied before aggregating; the qualifying set is exactly {Alpha, Gamma, Epsilon}."},{"stem":"Aldermoor Retail expresses its annual sales as an index with 2020 = 100. Given the 2020 actual sales figure (in £'000) and the 2024 index value below, what were Aldermoor's 2024 sales, expressed in £m?","topic":"Index numbers / scale conversion","dataTitle":"Aldermoor Retail — sales index (2020 = 100)","chartType":"table","unit":"£m","tableHeaders":["Item","Value"],"tableRows":[["2020 actual sales (£'000)","84,500"],["2020 sales index","100"],["2024 sales index","142"]],"options":["£84.5m","£120.0m","£204.5m","£119,990m"],"answerIndex":1,"reasoning":"2024 sales (£'000) = 2020 sales × index/100 = 84,500 × 142/100 = 84,500 × 1.42 = 119,990 (£'000). Convert £'000 to £m by dividing by 1,000: 119,990/1,000 = £119.99m ≈ £120.0m. Distractor £119,990m fails the thousands-to-millions scale conversion (leaves the £'000 figure but stamps £m on it). Distractor £204.5m treats the index of 142 as a 142% increase (×2.42) rather than a level (×1.42): 84,500 × 2.42 = 204,490 → £204.5m. £84.5m is the unindexed 2020 base value with the wrong scale."},{"stem":"The summarised P&L for Thornbury Manufacturing is shown for 2023 and 2024 (operating profit is not stated and must be derived). By how many percentage points did the operating margin change from 2023 to 2024?","topic":"P&L derivation / margin change","dataTitle":"Thornbury Manufacturing — summarised P&L (£m)","chartType":"table","unit":"percentage points","tableHeaders":["Line","2023 (£m)","2024 (£m)"],"tableRows":[["Revenue","540.0","612.0"],["Cost of goods sold","351.0","379.0"],["Operating expenses","92.0","104.0"]],"options":["+3.07 pp","+3.12 pp","+17.34 pp","+32.0 pp"],"answerIndex":1,"reasoning":"Operating profit = revenue − COGS − opex. 2023: 540 − 351 − 92 = £97m; margin = 97/540 = 17.96%. 2024: 612 − 379 − 104 = £129m; margin = 129/612 = 21.08%. Change = 21.08 − 17.96 = +3.12 percentage points. Distractor +3.07 pp is the change in GROSS margin [(540 − 351)/540 = 35.00% vs (612 − 379)/612 = 38.07%], excluding opex — the wrong profit line. Distractor +17.34 pp is the relative % change in the margin [(21.08 − 17.96)/17.96 × 100], not the percentage-point change. +32.0 is the change in operating profit in £m (129 − 97), not a margin change."},{"stem":"Helix Diagnostics reported the annual revenue figures shown. Calculate the compound annual growth rate (CAGR) of revenue over the period from 2019 to 2023, to the nearest 0.1 percentage point.","topic":"CAGR / compound growth","unit":"%","dataTitle":"Helix Diagnostics — annual revenue (£m)","chartType":"bar","labels":["2019","2020","2021","2022","2023"],"series":[{"name":"Revenue (£m)","values":[48,55.1,68.4,79.2,92.6]}],"options":["14.0%","17.9%","23.2%","19.3%"],"answerIndex":1,"reasoning":"CAGR uses only the endpoints and the number of intervals. From 2019 to 2023 is 4 intervals (not 5 years). CAGR = (92.6/48.0)^(1/4) − 1 = (1.929167)^0.25 − 1 = 1.178535 − 1 = 0.178535 = 17.85%, which rounds to 17.9%. Distractor 23.2% is the simple total growth (92.6/48.0 − 1 = 92.92%) divided by 4 (= 23.23%) — averaging arithmetically instead of compounding. Distractor 14.0% comes from dividing by 5 instead of 4 intervals: (92.6/48.0)^(1/5) − 1 = 14.04%, the off-by-one-period error. Distractor 19.3% matches no consistent method (the simple-growth-over-5 figure is 18.6%), serving as a near-miss."},{"stem":"A UK importer must pay a German supplier an invoice of EUR 1,460,000. Its bank will convert at the quoted rate of GBP 1 = EUR 1.1840 and adds a commission of 0.85% on the sterling amount converted. What is the total cost to the importer, in sterling?","topic":"Currency conversion with commission","unit":"£000","dataTitle":"FX transaction terms","chartType":"table","tableHeaders":["Item","Value"],"tableRows":[["Invoice amount (EUR)","1460000"],["Quoted rate (EUR per GBP 1)","1.1840"],["Bank commission on sterling amount (%)","0.85"]],"options":["£1,222.6k","£1,233.1k","£1,243.6k","£1,728.6k"],"answerIndex":2,"reasoning":"Since GBP 1 = EUR 1.1840, divide to get sterling: 1,460,000 / 1.1840 = £1,233,108.11. Commission is 0.85% of that: 1,233,108.11 × 0.0085 = £10,481.42. Total = 1,233,108.11 + 10,481.42 = £1,243,589.53 ≈ £1,243.6k. Distractor £1,233.1k omits the commission entirely. Distractor £1,728.6k multiplies by the rate instead of dividing (1,460,000 × 1.1840 / 1000), the inverted-conversion error. Distractor £1,222.6k wrongly subtracts the commission instead of adding it (1,233,108.11 − 10,481.42)."},{"stem":"The table shows Tarrant Manufacturing's annual production index (base year 2018 = 100). Management wishes to re-base the series so that 2020 = 100. On the re-based series, what is the index value for 2022 (to the nearest 0.1)?","topic":"Index numbers","unit":"index","dataTitle":"Tarrant Manufacturing — production index (2018 = 100)","chartType":"line","labels":["2018","2019","2020","2021","2022"],"series":[{"name":"Production index","values":[100,108,103,121,134]}],"options":["117.5","130.1","131.0","134.0"],"answerIndex":1,"reasoning":"Re-basing to 2020 means dividing each year's index by the 2020 value and multiplying by 100. For 2022: 134 / 103 × 100 = 130.097, which rounds to 130.1. Distractor 134.0 fails to re-base at all (keeps the 2018 base). Distractor 131.0 comes from the additive error 134 − 103 + 100 = 131, treating index points as differences rather than ratios. Distractor 117.5 is the re-based 2021 value (121/103×100 = 117.48), the off-by-one-row error."},{"stem":"The table shows output and headcount for three of Calbourne Industries' plants in the last quarter. Which plant achieved the highest output per employee, and what was that figure (to the nearest whole unit)?","topic":"Per-unit productivity","unit":"units/employee","dataTitle":"Calbourne Industries — quarterly output and headcount","chartType":"table","tableHeaders":["Plant","Output (000 units)","Headcount"],"tableRows":[["Aldridge","184.5","246"],["Brentmoor","212.8","305"],["Caldwell","167.2","209"]],"options":["Brentmoor — 698 units","Aldridge — 750 units","Caldwell — 800 units","Caldwell — 750 units"],"answerIndex":2,"reasoning":"Output is in thousands of units, so convert before dividing. Aldridge: 184,500/246 = 750.0. Brentmoor: 212,800/305 = 697.7. Caldwell: 167,200/209 = 800.0. Caldwell is highest at 800 units/employee. Distractor 'Brentmoor — 698' picks the plant with the largest raw output, ignoring that productivity is per head. Distractor 'Aldridge — 750' is the correct value for the wrong (second-highest) plant. Distractor 'Caldwell — 750' attaches Aldridge's figure to the right plant — an adjacent-row mix-up."},{"stem":"At the end of August (eight months), Westgate Logistics has cumulative revenue of £14.72m. September is expected to run exactly at the simple monthly run-rate set by the first eight months, while each of the final three months (October–December) is expected to run 15% above that run-rate. What is the forecast full-year revenue?","topic":"Proration & forecasting","unit":"£m","dataTitle":"Westgate Logistics — revenue forecast inputs","chartType":"table","tableHeaders":["Item","Value"],"tableRows":[["Cumulative revenue, Jan–Aug (£m)","14.72"],["Months elapsed","8"],["September run-rate vs. monthly average","100%"],["Oct–Dec run-rate vs. monthly average","115%"]],"options":["£22.08m","£22.91m","£23.18m","£21.07m"],"answerIndex":1,"reasoning":"Monthly run-rate = 14.72 / 8 = £1.84m. September at run-rate = 1.84. Oct–Dec at 115%: 1.84 × 3 × 1.15 = £6.348m. Full year = 14.72 + 1.84 + 6.348 = £22.908m ≈ £22.91m. Distractor £22.08m is the naive straight-line 1.84 × 12 with no uplift. Distractor £23.18m applies the 15% uplift to all four remaining months including September (14.72 + 1.84×4×1.15 = 23.184). Distractor £21.07m omits September altogether (14.72 + 6.348 = 21.068)."},{"stem":"Marlowe Appliances sells a kettle for £42.50 per unit. The variable cost is £27.80 per unit and annual fixed costs attributable to the product are £388,000. How many units must be sold for the product to break even (rounded up to the next whole unit)?","topic":"Break-even","unit":"units","dataTitle":"Marlowe Appliances — kettle cost structure","chartType":"table","tableHeaders":["Item","Value (£)"],"tableRows":[["Selling price per unit","42.50"],["Variable cost per unit","27.80"],["Annual fixed costs","388000"]],"options":["9,129 units","13,957 units","26,395 units","26,394 units"],"answerIndex":2,"reasoning":"Contribution margin per unit = 42.50 − 27.80 = £14.70. Break-even = fixed costs / contribution = 388,000 / 14.70 = 26,394.56 units; rounding up gives 26,395. Distractor 26,394 rounds down rather than up — at 26,394 units contribution is 26,394 × 14.70 = £387,991.80, still short of £388,000, so it does not break even. Distractor 9,129 divides fixed cost by price (388,000/42.50 = 9,129.4), ignoring variable cost. Distractor 13,957 divides by the variable cost instead of the contribution margin (388,000/27.80 = 13,956.8)."},{"stem":"BluePeak Telecom routes customer calls through three service tiers, each with its own per-call cost, as shown. What is the blended cost per call across all calls handled (to the nearest penny)?","topic":"Blended rates","unit":"£/call","dataTitle":"BluePeak Telecom — calls and cost by tier","chartType":"table","tableHeaders":["Tier","Calls handled","Cost per call (£)"],"tableRows":[["Tier 1","12400","3.20"],["Tier 2","7800","5.75"],["Tier 3","3100","9.40"]],"options":["£4.88","£6.12","£5.43","£4.65"],"answerIndex":0,"reasoning":"A blended rate must be weighted by volume. Total cost = 12,400×3.20 + 7,800×5.75 + 3,100×9.40 = 39,680 + 44,850 + 29,140 = £113,670. Total calls = 12,400 + 7,800 + 3,100 = 23,300. Blended = 113,670 / 23,300 = £4.878 ≈ £4.88. Distractor £6.12 is the simple unweighted mean of the three rates (3.20+5.75+9.40)/3 = 6.117 — the classic planted error that ignores the very different call volumes. Distractors £5.43 and £4.65 are near-miss values that no consistent method produces."},{"stem":"Vantage Software competes in a market that grew over the year shown. Using the figures in the table, by how many percentage points did Vantage's market share change from 2022 to 2023?","topic":"Market-share shift / percentage points","unit":"pp","dataTitle":"Vantage Software — revenue vs. total market (£m)","chartType":"groupedBar","labels":["2022","2023"],"series":[{"name":"Vantage revenue (£m)","values":[96,128]},{"name":"Total market (£m)","values":[640,710]}],"options":["+3.03 pp","+20.19 pp","+33.33 pp","+2.00 pp"],"answerIndex":0,"reasoning":"Share 2022 = 96/640 = 15.00%. Share 2023 = 128/710 = 18.03%. The change in percentage points is 18.03 − 15.00 = +3.03 pp. Distractor +20.19 pp is the relative percentage change in the share itself ((18.03−15.00)/15.00 = 20.19%) mislabelled as percentage points — the headline percentage-point versus percentage trap. Distractor +33.33 pp is Vantage's own revenue growth ((128−96)/96 = 33.33%), ignoring that the market also grew. Distractor +2.00 pp is a plausible-looking near-miss that no consistent method produces (note that even rounding both shares to whole numbers before differencing still gives 18 − 15 = 3 pp, not 2)."},{"stem":"The chart shows the year-on-year change applied to Northwind Media's subscriber base in three successive years. The base stood at 250,000 subscribers at the end of 2021. What was the subscriber base at the end of 2024 (to the nearest thousand)?","topic":"Compound growth (multi-period)","unit":"subscribers","dataTitle":"Northwind Media — year-on-year change in subscriber base","chartType":"bar","labels":["2021→2022","2022→2023","2023→2024"],"series":[{"name":"Change (%)","values":[12,8,-5]}],"options":["287,000","288,000","302,000","263,000"],"answerIndex":0,"reasoning":"Compound the factors sequentially on 250,000: ×1.12 = 280,000; ×1.08 = 302,400; ×0.95 = 287,280, which rounds to 287,000. Distractor 288,000 comes from adding the percentages (12 + 8 − 5 = +15%) and applying once: 250,000 × 1.15 = 287,500 → 288,000 — the additive-instead-of-compound error landing one option away. Distractor 302,000 forgets the final year's 5% churn (250,000 × 1.12 × 1.08 = 302,400). Distractor 263,000 (≈ 250,000 × 1.12 × 1.08 × 0.95 mishandled, or netting +5% then a 12% drop) reflects applying one step's change in the wrong direction."},{"stem":"For each product in Saxon Foods' range, gross margin % = (revenue − direct cost) / revenue. Considering only the products whose gross margin exceeds 40%, what is the combined gross margin percentage of that group taken together (to the nearest 0.1 percentage point)?","topic":"Conditional / threshold-filtered margin","unit":"%","dataTitle":"Saxon Foods — revenue and direct cost by product (£000)","chartType":"table","tableHeaders":["Product","Revenue (£000)","Direct cost (£000)"],"tableRows":[["Nimbus","1240","706.8"],["Orbit","980","539.0"],["Pulse","1560","998.4"],["Quartz","720","381.6"],["Strata","1100","704.0"]],"options":["40.5%","44.7%","45.0%","43.0%"],"answerIndex":1,"reasoning":"First compute each margin: Nimbus (1240−706.8)/1240 = 43.0%, Orbit (980−539.0)/980 = 45.0%, Pulse (1560−998.4)/1560 = 36.0%, Quartz (720−381.6)/720 = 47.0%, Strata (1100−704.0)/1100 = 36.0%. Only Nimbus, Orbit and Quartz exceed 40%. Combine those three in aggregate: revenue = 1240+980+720 = 2,940; direct cost = 706.8+539.0+381.6 = 1,627.4; combined gross margin = (2,940 − 1,627.4)/2,940 = 1,312.6/2,940 = 44.65% → 44.7%. Distractor 45.0% is the simple average of the three selected margins (43+45+47)/3, which ignores their different revenue weights. Distractor 40.5% aggregates over all five products ((5,600 − 3,329.8)/5,600 = 40.5%), ignoring the >40% filter. Distractor 43.0% is a single product's margin (Nimbus), an adjacent-value pick."}]; /* @INJECT:numerical */
+const VERBAL_DATA = [{"passageId":"p1","type":"tfc","topic":"Competition regulation / corporate strategy","passage":"In its provisional findings, the competition authority concluded that the proposed merger between Meridian Logistics and Calderon Freight would substantially lessen competition in the overnight parcel segment, where the combined entity would control an estimated 58 percent of national capacity. The authority noted that two smaller carriers had entered the segment in the preceding three years, but judged that neither possessed the depot network required to constrain the merged firm's pricing in the near term. Meridian's representatives argued that efficiency gains from consolidating sortation hubs would be passed to customers as lower tariffs; the authority acknowledged that such gains were plausible but said it had received no verifiable evidence that they would materialise at the scale claimed. The authority indicated that it would consider remedies, including the divestiture of selected depots, before issuing a final decision. It made no determination regarding the same-day courier segment, in which both firms also operate.","statement":"The competition authority found that the two smaller carriers that recently entered the overnight parcel segment would be unable to constrain the merged firm's pricing in the near term.","options":["True","False","Cannot Say"],"answerIndex":0,"reasoning":"The passage states the authority 'judged that neither possessed the depot network required to constrain the merged firm's pricing in the near term.' Lacking the depot network that is required to constrain pricing entails being unable to constrain it, and 'neither' covers both entrants, so the statement is entailed in full, including the 'near term' qualifier — TRUE. It is not Cannot Say because the authority's judgement on precisely this point is explicitly recorded; it is not False because nothing in the passage contradicts it."},{"passageId":"p1","type":"tfc","topic":"Competition regulation / corporate strategy","passage":"In its provisional findings, the competition authority concluded that the proposed merger between Meridian Logistics and Calderon Freight would substantially lessen competition in the overnight parcel segment, where the combined entity would control an estimated 58 percent of national capacity. The authority noted that two smaller carriers had entered the segment in the preceding three years, but judged that neither possessed the depot network required to constrain the merged firm's pricing in the near term. Meridian's representatives argued that efficiency gains from consolidating sortation hubs would be passed to customers as lower tariffs; the authority acknowledged that such gains were plausible but said it had received no verifiable evidence that they would materialise at the scale claimed. The authority indicated that it would consider remedies, including the divestiture of selected depots, before issuing a final decision. It made no determination regarding the same-day courier segment, in which both firms also operate.","statement":"The merger would give the combined entity a dominant position in the same-day courier segment.","options":["True","False","Cannot Say"],"answerIndex":2,"reasoning":"The final sentence states the authority 'made no determination regarding the same-day courier segment,' and the passage supplies no capacity figure or competitive assessment for that segment. Whether the entity would be dominant there is therefore undeterminable from the passage — CANNOT SAY. It is not True (the 58 percent figure is scoped explicitly to overnight parcels) and not False (the passage does not assert the entity would be non-dominant there; it is simply silent). This is the silence-versus-contradiction trap."},{"passageId":"p1","type":"tfc","topic":"Competition regulation / corporate strategy","passage":"In its provisional findings, the competition authority concluded that the proposed merger between Meridian Logistics and Calderon Freight would substantially lessen competition in the overnight parcel segment, where the combined entity would control an estimated 58 percent of national capacity. The authority noted that two smaller carriers had entered the segment in the preceding three years, but judged that neither possessed the depot network required to constrain the merged firm's pricing in the near term. Meridian's representatives argued that efficiency gains from consolidating sortation hubs would be passed to customers as lower tariffs; the authority acknowledged that such gains were plausible but said it had received no verifiable evidence that they would materialise at the scale claimed. The authority indicated that it would consider remedies, including the divestiture of selected depots, before issuing a final decision. It made no determination regarding the same-day courier segment, in which both firms also operate.","statement":"The authority concluded that consolidating Meridian's sortation hubs would produce no efficiency gains.","options":["True","False","Cannot Say"],"answerIndex":1,"reasoning":"The passage says the authority 'acknowledged that such gains were plausible' — it accepted the gains might exist, doubting only that they would materialise 'at the scale claimed.' A statement that the authority concluded there would be NO gains directly contradicts 'acknowledged that such gains were plausible,' so FALSE. The distractor conflates 'no verifiable evidence of the claimed scale' with 'concluded there are none'; the passage does the former, not the latter."},{"passageId":"p1","type":"tfc","topic":"Competition regulation / corporate strategy","passage":"In its provisional findings, the competition authority concluded that the proposed merger between Meridian Logistics and Calderon Freight would substantially lessen competition in the overnight parcel segment, where the combined entity would control an estimated 58 percent of national capacity. The authority noted that two smaller carriers had entered the segment in the preceding three years, but judged that neither possessed the depot network required to constrain the merged firm's pricing in the near term. Meridian's representatives argued that efficiency gains from consolidating sortation hubs would be passed to customers as lower tariffs; the authority acknowledged that such gains were plausible but said it had received no verifiable evidence that they would materialise at the scale claimed. The authority indicated that it would consider remedies, including the divestiture of selected depots, before issuing a final decision. It made no determination regarding the same-day courier segment, in which both firms also operate.","statement":"Divestiture of selected depots will be required as a condition of approving the merger.","options":["True","False","Cannot Say"],"answerIndex":2,"reasoning":"The passage says the authority 'indicated that it would consider remedies, including the divestiture of selected depots, before issuing a final decision.' Considering a remedy is not imposing it, and the passage states the final decision has not yet been made. Whether divestiture WILL be required is therefore undetermined — CANNOT SAY. Marking True over-reads 'consider' as 'will require' (modal drift); marking False is wrong because the passage does not rule divestiture out either."},{"passageId":"p1","type":"mcq","topic":"Critical reasoning — assumption","passage":"In its provisional findings, the competition authority concluded that the proposed merger between Meridian Logistics and Calderon Freight would substantially lessen competition in the overnight parcel segment, where the combined entity would control an estimated 58 percent of national capacity. The authority noted that two smaller carriers had entered the segment in the preceding three years, but judged that neither possessed the depot network required to constrain the merged firm's pricing in the near term. Meridian's representatives argued that efficiency gains from consolidating sortation hubs would be passed to customers as lower tariffs; the authority acknowledged that such gains were plausible but said it had received no verifiable evidence that they would materialise at the scale claimed. The authority indicated that it would consider remedies, including the divestiture of selected depots, before issuing a final decision. It made no determination regarding the same-day courier segment, in which both firms also operate.","statement":"Which of the following is an assumption REQUIRED by Meridian's argument that the merger would benefit customers?","options":["The two smaller carriers will exit the overnight parcel segment within three years.","Consolidating the sortation hubs would not raise the merged firm's costs by more than the efficiency savings it generates.","The authority will decline to impose any divestiture remedy.","Same-day courier customers would also receive lower tariffs after the merger.","Calderon Freight currently charges higher tariffs than Meridian."],"answerIndex":1,"reasoning":"Meridian's argument is that efficiency gains from consolidation will be passed on as LOWER tariffs. For there to be net savings to pass on, consolidation must not cost more than it saves — option 2 is a necessary suppressed premise. Apply the negation test: if consolidation costs exceed the savings, there is no net gain to pass through and the conclusion collapses, so the assumption is required. Option 1 concerns rivals, not pass-through. Option 3 is about the authority's remedy, irrelevant to whether customers benefit from the gains. Option 4 extends to a segment the argument never addresses. Option 5 (relative tariffs) is neither stated nor needed for the pass-through logic."},{"passageId":"p2","type":"tfc","topic":"Macroeconomics / monetary policy","passage":"The central bank's quarterly bulletin reported that headline inflation had fallen to 3.1 percent, down from 4.4 percent in the previous quarter, while core inflation, which excludes energy and food prices, remained elevated at 4.0 percent. The bulletin attributed the decline in the headline figure primarily to a sharp fall in wholesale gas prices rather than to any broad easing of domestic demand. The Monetary Policy Committee voted by a margin of six to three to hold the policy rate at its current level, with the dissenting members favouring a further increase on the grounds that wage growth, at 5.6 percent, continued to outpace productivity gains. The bulletin cautioned that the disinflationary effect of energy prices was likely to prove temporary and that services inflation, a closer proxy for underlying price pressure, had not yet shown a sustained downward trend. It offered no forecast for the policy rate beyond the current quarter.","statement":"Core inflation, which excludes energy and food prices, was higher than headline inflation in the quarter reported.","options":["True","False","Cannot Say"],"answerIndex":0,"reasoning":"For the reported quarter the passage gives headline inflation as 3.1 percent and core inflation as 4.0 percent. 4.0 > 3.1, so the statement follows directly — TRUE. The base must be tracked carefully (the 4.4 percent figure is the prior quarter's headline, not a comparator here); no extra assumption is needed, so it is not Cannot Say, and the figures do not contradict the claim, so it is not False."},{"passageId":"p2","type":"tfc","topic":"Macroeconomics / monetary policy","passage":"The central bank's quarterly bulletin reported that headline inflation had fallen to 3.1 percent, down from 4.4 percent in the previous quarter, while core inflation, which excludes energy and food prices, remained elevated at 4.0 percent. The bulletin attributed the decline in the headline figure primarily to a sharp fall in wholesale gas prices rather than to any broad easing of domestic demand. The Monetary Policy Committee voted by a margin of six to three to hold the policy rate at its current level, with the dissenting members favouring a further increase on the grounds that wage growth, at 5.6 percent, continued to outpace productivity gains. The bulletin cautioned that the disinflationary effect of energy prices was likely to prove temporary and that services inflation, a closer proxy for underlying price pressure, had not yet shown a sustained downward trend. It offered no forecast for the policy rate beyond the current quarter.","statement":"The bulletin attributed the decline in headline inflation primarily to the fall in wholesale gas prices.","options":["True","False","Cannot Say"],"answerIndex":0,"reasoning":"The passage states verbatim that the bulletin 'attributed the decline in the headline figure primarily to a sharp fall in wholesale gas prices rather than to any broad easing of domestic demand,' and the statement restates that attribution — TRUE. The statement is deliberately scoped to what the bulletin attributed (a reported claim) rather than to free-standing causal fact, so the passage establishes it directly: it is not Cannot Say, and nothing contradicts it, so it is not False."},{"passageId":"p2","type":"tfc","topic":"Macroeconomics / monetary policy","passage":"The central bank's quarterly bulletin reported that headline inflation had fallen to 3.1 percent, down from 4.4 percent in the previous quarter, while core inflation, which excludes energy and food prices, remained elevated at 4.0 percent. The bulletin attributed the decline in the headline figure primarily to a sharp fall in wholesale gas prices rather than to any broad easing of domestic demand. The Monetary Policy Committee voted by a margin of six to three to hold the policy rate at its current level, with the dissenting members favouring a further increase on the grounds that wage growth, at 5.6 percent, continued to outpace productivity gains. The bulletin cautioned that the disinflationary effect of energy prices was likely to prove temporary and that services inflation, a closer proxy for underlying price pressure, had not yet shown a sustained downward trend. It offered no forecast for the policy rate beyond the current quarter.","statement":"The Monetary Policy Committee will raise the policy rate at its next meeting.","options":["True","False","Cannot Say"],"answerIndex":2,"reasoning":"The Committee voted six to three to HOLD the rate this quarter, and the passage states it 'offered no forecast for the policy rate beyond the current quarter.' What it will do at the next meeting is therefore undetermined — CANNOT SAY. Marking True imports the three dissenters' preference as a future outcome though the minority did not carry the vote; marking False wrongly treats 'no forecast' as a commitment not to raise. The explicit refusal to forecast is the load-bearing clause."},{"passageId":"p3","type":"tfc","topic":"Corporate strategy / climate-risk modelling","passage":"A consultancy's report on physical climate risk to industrial assets modelled flood exposure for 1,200 manufacturing sites operated by its client across four regions. Using a high-emissions scenario, the model projected that the proportion of sites facing a one-in-twenty-year flood event would rise from 14 percent today to 31 percent by 2050. The report stressed that the model captured only riverine and coastal flooding and excluded surface-water flooding from intense rainfall, which it described as a material but poorly quantified additional hazard. It recommended that the client prioritise adaptation spending at the 96 sites already classified as high-exposure, noting that retrofitting flood defences at these sites would cost less than the expected value of the losses they would otherwise incur. The report did not assess the cost-effectiveness of adaptation at sites in the lower exposure bands, and it assumed, for tractability, that the client's asset footprint would remain unchanged through 2050.","statement":"Under the high-emissions scenario, the model projected that the number of the client's sites exposed to a one-in-twenty-year flood event would more than double between today and 2050.","options":["True","False","Cannot Say"],"answerIndex":0,"reasoning":"The footprint is held constant at 1,200 sites through 2050 (stated as the report's tractability assumption), and the exposed proportion rises from 14 percent to 31 percent. Against a fixed base the count scales with the proportion, and 31/14 = 2.21x — equivalently 168 sites today versus 372 by 2050 — which exceeds doubling, so TRUE. The constant-footprint assumption is what licenses converting a proportion change into a count change; without it the count claim would be Cannot Say, which is the discriminator being tested. Nothing contradicts the claim, so it is not False."},{"passageId":"p3","type":"mcq","topic":"Critical reasoning — weaken","passage":"A consultancy's report on physical climate risk to industrial assets modelled flood exposure for 1,200 manufacturing sites operated by its client across four regions. Using a high-emissions scenario, the model projected that the proportion of sites facing a one-in-twenty-year flood event would rise from 14 percent today to 31 percent by 2050. The report stressed that the model captured only riverine and coastal flooding and excluded surface-water flooding from intense rainfall, which it described as a material but poorly quantified additional hazard. It recommended that the client prioritise adaptation spending at the 96 sites already classified as high-exposure, noting that retrofitting flood defences at these sites would cost less than the expected value of the losses they would otherwise incur. The report did not assess the cost-effectiveness of adaptation at sites in the lower exposure bands, and it assumed, for tractability, that the client's asset footprint would remain unchanged through 2050.","statement":"The report concludes that the client should concentrate adaptation spending on the 96 currently high-exposure sites. Which of the following, if true, would MOST weaken the case for that recommendation as a strategy for minimising the client's total expected flood losses?","options":["Retrofitting the 96 high-exposure sites would take several years to complete.","The majority of the client's expected flood losses arise at lower-exposure sites because surface-water flooding, which the model omitted, is concentrated there.","Some of the 96 high-exposure sites are located in only two of the four regions studied.","The high-emissions scenario is more severe than the scenario the client considers most likely.","Flood-defence retrofitting costs have risen since the report was published.","A competitor adopted a similar site-prioritisation approach."],"answerIndex":1,"reasoning":"The recommendation aims to reduce TOTAL expected flood losses by spending on the 96 modelled high-exposure sites. Option 2 attacks the foundation: if most expected losses actually sit at lower-exposure sites via the surface-water hazard the model explicitly excluded, then concentrating spend on the 96 misallocates resources against the stated objective — the strongest weakener, exploiting the passage's own acknowledged limitation. Option 1 (timing) does not show the 96 are the wrong targets. Option 3 (geographic spread) is irrelevant to loss minimisation. Option 4 makes the scenario conservative but leaves the 96 as valid priorities. Option 5 raises cost levels but not the relative prioritisation between bands. Option 6 (competitor behaviour) is irrelevant to whether the strategy minimises this client's losses."},{"passage":"The fabrication of leading-edge logic semiconductors—those at process nodes of five nanometres and below—remains overwhelmingly concentrated in a small number of foundries located in East Asia. Constructing a single advanced fabrication plant now requires capital outlays exceeding twenty billion dollars and a lead time of three to four years before commercial output begins. To diversify supply, several governments have introduced subsidy programmes that defray a portion of construction costs for plants built within their borders. Industry analysts caution, however, that capital alone does not guarantee competitive production. A newly commissioned plant typically suffers low manufacturing yields—the proportion of usable chips per silicon wafer—during its initial ramp, and reaching the yields achieved by an established facility can take many quarters of iterative process tuning. Moreover, the specialised lithography equipment essential to the most advanced nodes is supplied by a single firm, whose annual output is finite. Consequently, even a fully funded plant may be constrained by its place in the equipment-delivery queue. The subsidy programmes have unquestionably accelerated announcements of new capacity, but whether they will materially reduce geographic concentration at the leading edge depends on factors that public funding does not directly address.","passageId":"p4","type":"tfc","statement":"The government subsidy programmes fully cover the construction costs of the new fabrication plants they support.","options":["True","False","Cannot Say"],"answerIndex":1,"reasoning":"The passage says the programmes 'defray a portion of construction costs,' which directly contradicts the claim that they 'fully cover' those costs. Because the statement conflicts with an explicit assertion in the text, it is False rather than Cannot Say; 'a portion' necessarily excludes 'fully.'","topic":"semiconductors"},{"passage":"The fabrication of leading-edge logic semiconductors—those at process nodes of five nanometres and below—remains overwhelmingly concentrated in a small number of foundries located in East Asia. Constructing a single advanced fabrication plant now requires capital outlays exceeding twenty billion dollars and a lead time of three to four years before commercial output begins. To diversify supply, several governments have introduced subsidy programmes that defray a portion of construction costs for plants built within their borders. Industry analysts caution, however, that capital alone does not guarantee competitive production. A newly commissioned plant typically suffers low manufacturing yields—the proportion of usable chips per silicon wafer—during its initial ramp, and reaching the yields achieved by an established facility can take many quarters of iterative process tuning. Moreover, the specialised lithography equipment essential to the most advanced nodes is supplied by a single firm, whose annual output is finite. Consequently, even a fully funded plant may be constrained by its place in the equipment-delivery queue. The subsidy programmes have unquestionably accelerated announcements of new capacity, but whether they will materially reduce geographic concentration at the leading edge depends on factors that public funding does not directly address.","passageId":"p4","type":"tfc","statement":"The single firm that supplies the specialised lithography equipment is located in East Asia.","options":["True","False","Cannot Say"],"answerIndex":2,"reasoning":"The passage states that the most advanced foundries are concentrated in East Asia and that the lithography equipment comes from a single firm, but it never states where that supplier is located. The geographic location of the equipment firm is not given, so the passage provides insufficient information—Cannot Say. It is not True (no location stated) and not False (nothing contradicts an East Asian location either); the real-world fact that this supplier is European is a deliberate trap, since the answer must rest on the passage alone.","topic":"semiconductors"},{"passage":"The fabrication of leading-edge logic semiconductors—those at process nodes of five nanometres and below—remains overwhelmingly concentrated in a small number of foundries located in East Asia. Constructing a single advanced fabrication plant now requires capital outlays exceeding twenty billion dollars and a lead time of three to four years before commercial output begins. To diversify supply, several governments have introduced subsidy programmes that defray a portion of construction costs for plants built within their borders. Industry analysts caution, however, that capital alone does not guarantee competitive production. A newly commissioned plant typically suffers low manufacturing yields—the proportion of usable chips per silicon wafer—during its initial ramp, and reaching the yields achieved by an established facility can take many quarters of iterative process tuning. Moreover, the specialised lithography equipment essential to the most advanced nodes is supplied by a single firm, whose annual output is finite. Consequently, even a fully funded plant may be constrained by its place in the equipment-delivery queue. The subsidy programmes have unquestionably accelerated announcements of new capacity, but whether they will materially reduce geographic concentration at the leading edge depends on factors that public funding does not directly address.","passageId":"p4","type":"mcq","statement":"Which of the following is an assumption required by the analysts' caution that 'capital alone does not guarantee competitive production'?","options":["Subsidy programmes will eventually be discontinued by governments.","Factors other than available funding, such as yield ramps and equipment access, materially affect whether a plant becomes competitive.","Leading-edge nodes will remain at five nanometres for the foreseeable future.","East Asian foundries receive no government support of any kind.","Demand for leading-edge chips will continue to grow indefinitely."],"answerIndex":1,"reasoning":"The caution that money alone is insufficient only makes sense if something besides money determines competitiveness; the passage supplies exactly these factors (yield ramps that 'can take many quarters' and a constrained 'equipment-delivery queue'). Option B states that required assumption. The other options introduce claims (discontinuation of subsidies, frozen node sizes, no East Asian support, indefinite demand growth) that the argument neither requires nor mentions.","topic":"semiconductors"},{"passage":"A gene drive is a genetic engineering technique that biases inheritance so that a chosen DNA sequence is passed to nearly all of an organism's offspring, rather than to the roughly half predicted by ordinary Mendelian inheritance. Using CRISPR-based constructs, researchers have built drives in laboratory populations of the Anopheles mosquito, the principal vector of malaria, that spread a gene impairing female fertility. In contained cage trials, such drives have driven the engineered sequence to high frequency within several generations and, in some experiments, caused the population to collapse. Proponents argue that a self-propagating drive could suppress vector populations across a region without the recurrent application of insecticides. Critics raise two distinct concerns. First, because a drive is designed to spread autonomously, an accidental release could affect wild populations beyond any intended boundary, and once established a drive may be difficult to recall. Second, suppressing a vector species could have ecological consequences that cage trials cannot fully reveal. In response, some laboratories have developed 'reversal drives' intended to overwrite an earlier construct and restore the original sequence. Several scientific bodies have called for a moratorium on any open release until containment and reversibility have been more thoroughly demonstrated. No open-field release of a mosquito gene drive has yet been authorised.","passageId":"p5","type":"tfc","statement":"A gene drive causes a chosen DNA sequence to be inherited by a substantially greater proportion of offspring than ordinary Mendelian inheritance would predict.","options":["True","False","Cannot Say"],"answerIndex":0,"reasoning":"The opening sentence defines a gene drive as biasing inheritance 'so that a chosen DNA sequence is passed to nearly all of an organism's offspring, rather than to the roughly half predicted by ordinary Mendelian inheritance.' 'Nearly all' versus 'roughly half' is substantially greater, so the statement follows necessarily and is True. It is not False (it restates the definition) and not Cannot Say (the comparison is explicit).","topic":"biotechnology"},{"passage":"A gene drive is a genetic engineering technique that biases inheritance so that a chosen DNA sequence is passed to nearly all of an organism's offspring, rather than to the roughly half predicted by ordinary Mendelian inheritance. Using CRISPR-based constructs, researchers have built drives in laboratory populations of the Anopheles mosquito, the principal vector of malaria, that spread a gene impairing female fertility. In contained cage trials, such drives have driven the engineered sequence to high frequency within several generations and, in some experiments, caused the population to collapse. Proponents argue that a self-propagating drive could suppress vector populations across a region without the recurrent application of insecticides. Critics raise two distinct concerns. First, because a drive is designed to spread autonomously, an accidental release could affect wild populations beyond any intended boundary, and once established a drive may be difficult to recall. Second, suppressing a vector species could have ecological consequences that cage trials cannot fully reveal. In response, some laboratories have developed 'reversal drives' intended to overwrite an earlier construct and restore the original sequence. Several scientific bodies have called for a moratorium on any open release until containment and reversibility have been more thoroughly demonstrated. No open-field release of a mosquito gene drive has yet been authorised.","passageId":"p5","type":"tfc","statement":"Deploying a gene drive in wild mosquito populations would eradicate malaria as a human disease.","options":["True","False","Cannot Say"],"answerIndex":2,"reasoning":"The passage says drives could 'suppress vector populations' and impair fertility, and that cage trials sometimes caused population collapse, but it never claims that deploying a drive in the wild would eradicate the disease malaria in humans—indeed no open release has been authorised. Disease eradication is a stronger, separate outcome the passage does not establish, so Cannot Say. It is not True (never asserted) and not False (the passage does not deny it either); the plausibility of the claim in popular discussion is the trap.","topic":"biotechnology"},{"passage":"A gene drive is a genetic engineering technique that biases inheritance so that a chosen DNA sequence is passed to nearly all of an organism's offspring, rather than to the roughly half predicted by ordinary Mendelian inheritance. Using CRISPR-based constructs, researchers have built drives in laboratory populations of the Anopheles mosquito, the principal vector of malaria, that spread a gene impairing female fertility. In contained cage trials, such drives have driven the engineered sequence to high frequency within several generations and, in some experiments, caused the population to collapse. Proponents argue that a self-propagating drive could suppress vector populations across a region without the recurrent application of insecticides. Critics raise two distinct concerns. First, because a drive is designed to spread autonomously, an accidental release could affect wild populations beyond any intended boundary, and once established a drive may be difficult to recall. Second, suppressing a vector species could have ecological consequences that cage trials cannot fully reveal. In response, some laboratories have developed 'reversal drives' intended to overwrite an earlier construct and restore the original sequence. Several scientific bodies have called for a moratorium on any open release until containment and reversibility have been more thoroughly demonstrated. No open-field release of a mosquito gene drive has yet been authorised.","passageId":"p5","type":"tfc","statement":"Every gene drive built by researchers to date has caused the laboratory mosquito population to collapse.","options":["True","False","Cannot Say"],"answerIndex":1,"reasoning":"The passage states that population collapse occurred 'in some experiments,' which entails that not all experiments produced collapse; the universal claim 'every... has caused' therefore contradicts the text and is False. It is not Cannot Say because the qualifier 'in some experiments' provides definite information that refutes the universal statement; it is not True for the same reason.","topic":"biotechnology"},{"passage":"A gene drive is a genetic engineering technique that biases inheritance so that a chosen DNA sequence is passed to nearly all of an organism's offspring, rather than to the roughly half predicted by ordinary Mendelian inheritance. Using CRISPR-based constructs, researchers have built drives in laboratory populations of the Anopheles mosquito, the principal vector of malaria, that spread a gene impairing female fertility. In contained cage trials, such drives have driven the engineered sequence to high frequency within several generations and, in some experiments, caused the population to collapse. Proponents argue that a self-propagating drive could suppress vector populations across a region without the recurrent application of insecticides. Critics raise two distinct concerns. First, because a drive is designed to spread autonomously, an accidental release could affect wild populations beyond any intended boundary, and once established a drive may be difficult to recall. Second, suppressing a vector species could have ecological consequences that cage trials cannot fully reveal. In response, some laboratories have developed 'reversal drives' intended to overwrite an earlier construct and restore the original sequence. Several scientific bodies have called for a moratorium on any open release until containment and reversibility have been more thoroughly demonstrated. No open-field release of a mosquito gene drive has yet been authorised.","passageId":"p5","type":"mcq","statement":"Which option, if true, would most strengthen the proponents' case for deploying a self-propagating gene drive?","options":["Insecticide-based vector control is expensive to administer repeatedly.","Field studies confirm that reversal drives reliably and completely undo an established drive and restore the original population.","The Anopheles mosquito is the principal vector of malaria.","CRISPR constructs are increasingly inexpensive to design in the laboratory.","Some cage trials did not result in population collapse."],"answerIndex":1,"reasoning":"The critics' strongest objection is that a drive may spread beyond intended boundaries and 'may be difficult to recall.' Evidence that reversal drives reliably and completely undo an established drive directly neutralises that objection and thus most strengthens the case for deployment (option B). Option A and D add minor cost considerations, option C merely restates a passage fact, and option E actually undercuts the proponents. Only B addresses the central recallability concern.","topic":"biotechnology"},{"passage":"Small modular reactors, or SMRs, are nuclear fission plants with a generating capacity typically below three hundred megawatts, designed to be assembled largely from factory-built components rather than constructed entirely on site. Advocates contend that standardised, factory production could reduce the cost overruns and schedule delays that have long afflicted large conventional reactors, and that an SMR's smaller output makes it suitable for grids or industrial sites that cannot absorb a gigawatt-scale unit. Several designs incorporate passive safety systems that rely on natural circulation to remove residual heat without external power or operator intervention. Critics note that, because few SMRs have been built and operated commercially, claims about their delivered cost per unit of electricity remain largely projections rather than demonstrated results, and that smaller reactors forgo some of the economies of scale enjoyed by larger plants. SMRs still produce radioactive waste, though proponents argue that certain designs generate less per unit of energy and that the waste can be managed with existing approaches. Regulatory frameworks in many jurisdictions were written for large light-water reactors, and adapting licensing procedures to novel SMR designs has in several cases proved slower than developers anticipated. No consensus yet exists on whether SMRs will achieve the cost reductions their advocates project.","passageId":"p6","type":"tfc","statement":"Small modular reactors produce no radioactive waste.","options":["True","False","Cannot Say"],"answerIndex":1,"reasoning":"The passage states explicitly that 'SMRs still produce radioactive waste,' which directly contradicts the claim that they produce none. This is a flat contradiction of the text, so the statement is False, not Cannot Say; the passage settles the question definitively (it only adds that some designs may produce less per unit, not zero).","topic":"energy"},{"passage":"Small modular reactors, or SMRs, are nuclear fission plants with a generating capacity typically below three hundred megawatts, designed to be assembled largely from factory-built components rather than constructed entirely on site. Advocates contend that standardised, factory production could reduce the cost overruns and schedule delays that have long afflicted large conventional reactors, and that an SMR's smaller output makes it suitable for grids or industrial sites that cannot absorb a gigawatt-scale unit. Several designs incorporate passive safety systems that rely on natural circulation to remove residual heat without external power or operator intervention. Critics note that, because few SMRs have been built and operated commercially, claims about their delivered cost per unit of electricity remain largely projections rather than demonstrated results, and that smaller reactors forgo some of the economies of scale enjoyed by larger plants. SMRs still produce radioactive waste, though proponents argue that certain designs generate less per unit of energy and that the waste can be managed with existing approaches. Regulatory frameworks in many jurisdictions were written for large light-water reactors, and adapting licensing procedures to novel SMR designs has in several cases proved slower than developers anticipated. No consensus yet exists on whether SMRs will achieve the cost reductions their advocates project.","passageId":"p6","type":"tfc","statement":"It has been commercially demonstrated that electricity from SMRs costs less per unit than electricity from large conventional reactors.","options":["True","False","Cannot Say"],"answerIndex":1,"reasoning":"The passage states that 'because few SMRs have been built and operated commercially, claims about their delivered cost per unit of electricity remain largely projections rather than demonstrated results,' and that no consensus exists on whether the projected cost reductions will be achieved. Asserting that lower cost has been 'commercially demonstrated' directly contradicts the statement that such claims are projections, not demonstrated results, so it is False. It is not Cannot Say because the passage expressly characterises the cost claims as undemonstrated, which refutes the statement rather than merely leaving it open.","topic":"energy"},{"passage":"Small modular reactors, or SMRs, are nuclear fission plants with a generating capacity typically below three hundred megawatts, designed to be assembled largely from factory-built components rather than constructed entirely on site. Advocates contend that standardised, factory production could reduce the cost overruns and schedule delays that have long afflicted large conventional reactors, and that an SMR's smaller output makes it suitable for grids or industrial sites that cannot absorb a gigawatt-scale unit. Several designs incorporate passive safety systems that rely on natural circulation to remove residual heat without external power or operator intervention. Critics note that, because few SMRs have been built and operated commercially, claims about their delivered cost per unit of electricity remain largely projections rather than demonstrated results, and that smaller reactors forgo some of the economies of scale enjoyed by larger plants. SMRs still produce radioactive waste, though proponents argue that certain designs generate less per unit of energy and that the waste can be managed with existing approaches. Regulatory frameworks in many jurisdictions were written for large light-water reactors, and adapting licensing procedures to novel SMR designs has in several cases proved slower than developers anticipated. No consensus yet exists on whether SMRs will achieve the cost reductions their advocates project.","passageId":"p6","type":"tfc","statement":"In some jurisdictions, adapting existing licensing procedures to novel SMR designs has taken longer than developers expected.","options":["True","False","Cannot Say"],"answerIndex":0,"reasoning":"The passage states that regulatory frameworks were written for large light-water reactors and that 'adapting licensing procedures to novel SMR designs has in several cases proved slower than developers anticipated.' 'In several cases' supports 'in some jurisdictions,' and 'slower than anticipated' supports 'taken longer than developers expected,' so the statement follows necessarily and is True. It is not False (it restates the text) and not Cannot Say (the information is explicitly provided).","topic":"energy"}]; /* @INJECT:verbal */
+const DEDUCTIVE_DATA = [{"type":"syllogism","topic":"Categorical syllogism with mixed quantifiers; illicit converse and existential traps","stem":"Which one of the following conclusions MUST be true given both premises?","context":"In a professional-services firm, the following two statements are known to be true:\nPremise 1: All certified auditors are licensed practitioners.\nPremise 2: Some licensed practitioners are not bonded.","options":["Some certified auditors are not bonded.","All licensed practitioners are certified auditors.","Some bonded staff are licensed practitioners.","No valid conclusion linking certified auditors to bonding can be drawn from these premises.","No bonded staff are certified auditors."],"answerIndex":3,"reasoning":"Premise 1 gives Auditors ⊆ Licensed. Premise 2 guarantees at least one licensed practitioner who is not bonded, but says nothing about WHICH licensed practitioners those are. The middle term (Licensed) is undistributed in Premise 1 — Auditors are only a subset of Licensed, not the whole of it — so nothing transfers from the 'not bonded' licensed people to the auditors.\n\nRefuting (A) 'Some certified auditors are not bonded': the unbonded licensed people could all be non-auditors. Counter-model: auditor a1 is licensed and bonded; a separate licensed person l1 is not an auditor and not bonded (satisfies P2). Here every auditor is bonded, so (A) is false — hence not entailed. This is the classic trap of illicitly distributing the middle term.\n\nRefuting (B) 'All licensed practitioners are certified auditors': this is the illicit converse of Premise 1. In the model above, l1 is licensed but not an auditor, so (B) is false.\n\nRefuting (C) 'Some bonded staff are licensed practitioners': the premises never assert any bonded person exists. Counter-model: auditor a1 is licensed but NOT bonded; l1 is licensed and not bonded; nobody is bonded. P1 (Auditors ⊆ Licensed) and P2 (l1 is licensed and unbonded) both hold, yet there are no bonded staff, so (C) is false — not entailed.\n\nRefuting (E) 'No bonded staff are certified auditors': the first model has a bonded auditor (a1), so (E) is false.\n\nSince every candidate linking auditors to bonding can be made false while the premises stay true, the only certain statement is (D): no valid conclusion about auditors and bonding follows. Exactly one option survives."},{"type":"conditional","topic":"If-then chain plus contrapositive (modus tollens through two links)","stem":"Which conclusion is logically guaranteed?","context":"A procurement workflow obeys these rules:\nRule 1: If a vendor is onboarded, then the contract has been countersigned.\nRule 2: If the contract has been countersigned, then a budget code has been issued.\nFact: For vendor Helix, no budget code has been issued.","options":["Helix has been onboarded.","Helix's contract has been countersigned.","If a budget code is issued for Helix, then Helix has been onboarded.","Helix has not been onboarded.","Helix's contract has not been countersigned, but Helix may still have been onboarded."],"answerIndex":3,"reasoning":"Let V = onboarded, C = countersigned, B = budget code issued. Rule 1: V → C. Rule 2: C → B. Fact: ¬B.\n\nApply modus tollens to Rule 2: from C → B and ¬B infer ¬C — the contract was NOT countersigned. Apply modus tollens to Rule 1: from V → C and ¬C infer ¬V — the vendor was NOT onboarded. Therefore (D) is forced. An exhaustive truth-table check confirms every world satisfying V→C, C→B and ¬B has both V false and C false.\n\nRefuting (A): it asserts onboarding, the opposite of what the chain forces.\nRefuting (B): ¬B forces ¬C by contrapositive, so the contract was NOT countersigned.\nRefuting (C): this reverses the chain (B → V), an illicit converse; the rules only run V → C → B, never backward, so the converse is not entailed.\nRefuting (E): it correctly derives ¬C but then claims onboarding is still open. In fact ¬C chains forward via Rule 1's contrapositive to ¬V, so onboarding is definitively ruled out, not left undetermined. Exactly one option (D) is forced."},{"type":"conditional","topic":"Necessary vs sufficient conditions (separating the two directions)","stem":"Operations confirms that the demand forecast WAS submitted for Project Atlas, but does not say whether the project was approved. What, if anything, can be concluded with certainty?","context":"Two governance rules apply to every project:\nRule A: A budget review is necessary for project approval.\nRule B: Submitting the demand forecast is sufficient for a budget review to take place.","options":["Project Atlas has been approved.","A budget review has taken place for Project Atlas.","Project Atlas has not been approved.","A budget review has taken place, and therefore Project Atlas has been approved.","Nothing can be concluded; the forecast tells us nothing about the review."],"answerIndex":1,"reasoning":"Translate each rule precisely. Rule A 'a budget review is necessary for approval' means Approval → Review (the review is a necessary condition; no review ⇒ no approval). Rule B 'submitting the forecast is sufficient for a review' means Forecast → Review.\n\nGiven: Forecast is true. By Rule B (Forecast → Review, modus ponens), a budget review HAS taken place. So (B) is guaranteed.\n\nWhat about approval? Rule A only gives Approval → Review, i.e. the review is necessary, not sufficient, for approval. Knowing the review happened does NOT let us infer approval — that would be affirming the consequent of Rule A. A truth-table over {Approval, Review, Forecast} constrained by Approval→Review and Forecast→Review, with Forecast = true, contains both a world where Approval is true (Review true) and a world where Approval is false (Review true) — so approval is undetermined.\n\nRefuting (A): asserts approval, not forced (affirming the consequent of Rule A).\nRefuting (C): asserts non-approval, equally undetermined — approval can be either value.\nRefuting (D): correctly derives the review but then leaps to approval, treating the necessary condition as if it were sufficient — the central trap.\nRefuting (E): false because the forecast IS sufficient for the review (Rule B), a firm conclusion. Only (B) is both forced and not overreaching."},{"type":"dataSufficiency","topic":"Sufficiency of single statements against a directional conditional","stem":"Question: Was the proposal approved? Using the rule above, evaluate the two statements and select the correct sufficiency verdict.","context":"A committee approves a proposal ONLY IF both the Chair and the Treasurer vote in favour. You must decide whether the proposal was approved.\nStatement (1): The Treasurer voted in favour.\nStatement (2): The Chair voted against.","options":["Statement (1) ALONE is sufficient, but statement (2) alone is not.","Statement (2) ALONE is sufficient, but statement (1) alone is not.","Each statement ALONE is sufficient.","BOTH statements TOGETHER are sufficient, but neither alone is.","Both statements together are still NOT sufficient."],"answerIndex":1,"reasoning":"'Approves only if both Chair and Treasurer vote in favour' yields Approve → (Chair ∧ Treasurer). Equivalently, by contrapositive, ¬(Chair ∧ Treasurer) → ¬Approve.\n\nStatement (2): Chair voted against ⇒ ¬Chair ⇒ ¬(Chair ∧ Treasurer) ⇒ by contrapositive ¬Approve. So (2) ALONE settles the question: the proposal was NOT approved. Sufficient (it yields a definite answer — 'no' — to 'was it approved?').\n\nStatement (1): Treasurer in favour, Chair unknown. Enumerating valid worlds under Approve → (Chair ∧ Treasurer) with Treasurer = yes gives both an approved world (Chair yes, Approve yes) and unapproved worlds (Chair no, Approve no). Approval is undetermined. NOT sufficient.\n\nTherefore statement (2) alone is sufficient while (1) alone is not — answer (B).\n\nRefuting (A): reverses which statement works; (1) leaves the Chair open and so cannot decide approval.\nRefuting (C): (1) is not sufficient, so 'each alone' fails.\nRefuting (D): (2) already suffices alone, so 'neither alone' is false.\nRefuting (E): (2) makes the pair (and (2) by itself) sufficient, so 'still not sufficient' is false. Note the rule is only a one-directional conditional, so 'both vote yes' would NOT by itself prove approval — but neither statement asserts that, so it does not affect the verdict."},{"type":"arrangement","topic":"Linear arrangement under adjacency, anchor and ordering constraints","stem":"Reading left to right, which manager occupies office 3 (the middle office)?","context":"Five managers — Adler, Brandt, Cho, Diaz and Eriksen — occupy a single row of five offices numbered 1 to 5 from left to right, one manager per office. The following all hold:\n• Diaz is in office 4.\n• Adler is in office 1.\n• Brandt sits immediately to the right of Eriksen.\n• Eriksen sits somewhere to the left of Cho.","options":["Adler","Brandt","Cho","Diaz","Eriksen"],"answerIndex":1,"reasoning":"Place the absolutes first: Adler = office 1, Diaz = office 4. The remaining managers Brandt, Cho, Eriksen fill offices 2, 3, 5.\n\n'Brandt immediately to the right of Eriksen' means Brandt = Eriksen + 1, i.e. they occupy consecutive offices. Within the open offices {2, 3, 5}, the only consecutive pair available is (2, 3) — office 5 cannot pair, since the office to its left (4) is taken by Diaz and there is no office 6. So Eriksen = 2 and Brandt = 3. That leaves Cho = office 5.\n\nCheck 'Eriksen left of Cho': Eriksen = 2 < Cho = 5. Satisfied.\n\nFull layout: 1 Adler, 2 Eriksen, 3 Brandt, 4 Diaz, 5 Cho. An exhaustive permutation search confirms this is the UNIQUE arrangement satisfying all four constraints. Office 3 is therefore Brandt — answer (B).\n\nThe distractors correspond to misreadings: swapping the Brandt/Eriksen order (E), forgetting Cho must be right of Eriksen and sliding Cho to the middle (C), or ignoring the fixed anchors (A, D)."},{"type":"logicalPuzzle","topic":"Conditional selection constraints; finding the forced exclusion","stem":"Exactly three of the six candidates will form the team. Which candidate can NEVER be on a valid team?","context":"A project team of exactly three people must be chosen from six candidates: P, Q, R, S, T and U. All of the following selection rules must hold:\n• If P is selected, then Q is not selected.\n• R is selected only if S is selected.\n• At least one of T and U is selected.\n• Q and S cannot both be selected.\n• If U is selected, then P is selected.","options":["P","Q","R","S","U"],"answerIndex":1,"reasoning":"Test whether Q can be on any valid team. Suppose Q is selected. Rule 'Q and S cannot both be selected' forces ¬S. Rule 'R only if S' (R → S) with ¬S forces ¬R. Rule 'if P then ¬Q' has contrapositive Q → ¬P, which forces ¬P. Rule 'if U then P' (U → P) with ¬P forces ¬U. So with Q in, we have excluded S, R, P and U — the only remaining candidates are Q and T, just two people. A team needs three, so a valid team containing Q cannot be completed. Hence Q can NEVER be selected.\n\nExhaustive enumeration of all C(6,3) = 20 triples confirms exactly four valid teams exist — {P,S,T}, {P,S,U}, {P,T,U}, {R,S,T} — and Q appears in none of them, while P, S and T each appear in three and U in two.\n\nRefuting (A) P, (C) R, (D) S, (E) U: each is present in at least one valid team listed above, so none of them is impossible. Only Q is forced out of every team."},{"type":"sequence","topic":"Relative ranking from ordering and fixed-gap clues","stem":"In the final performance ranking (1 = highest), who is ranked 3rd?","context":"Five sales managers — Tan, Udeh, Vega, Walsh and Xiu — are placed in a strict performance ranking from 1st (highest) to 5th (lowest), no ties. The following are known:\n• Tan is ranked higher than Udeh.\n• Vega is ranked exactly two places below Walsh (e.g. if Walsh is 1st, Vega is 3rd).\n• Xiu is ranked 1st.\n• Udeh is ranked 5th.","options":["Tan","Udeh","Vega","Walsh","Xiu"],"answerIndex":0,"reasoning":"Fix the anchors: Xiu = rank 1, Udeh = rank 5. The remaining ranks 2, 3, 4 go to Tan, Vega and Walsh in some order.\n\nApply 'Vega is exactly two places below Walsh' (rank(Vega) = rank(Walsh) + 2). Within the open ranks {2, 3, 4}, the only pair with a gap of two is Walsh = 2 and Vega = 4. (Walsh = 3 would need Vega = 5, taken by Udeh; Walsh = 4 would need Vega = 6, which does not exist.) That leaves Tan = rank 3.\n\nCheck 'Tan higher than Udeh': Tan = 3 is higher (smaller number) than Udeh = 5. Satisfied.\n\nFinal ranking: 1 Xiu, 2 Walsh, 3 Tan, 4 Vega, 5 Udeh. An exhaustive permutation search confirms this is the UNIQUE ordering meeting all four clues. The manager in 3rd place is Tan — answer (A).\n\nDistractors arise from misplacing the Walsh–Vega gap (putting Vega or Walsh in the middle) or from ignoring the fixed 1st/5th anchors."},{"type":"conditional","topic":"Biconditional (necessary AND sufficient) with modus tollens","stem":"It is confirmed that the service was NOT deployed. What follows with certainty?","context":"An engineering policy states: 'A passing security scan is both necessary and sufficient for a service to be deployed.'","options":["The security scan passed.","The security scan did not pass.","The scan may or may not have passed; deployment status does not determine it.","The service will be deployed once the scan is rerun.","The scan passed but deployment was blocked for another reason."],"answerIndex":1,"reasoning":"'Necessary and sufficient' makes this a biconditional: Deploy ↔ ScanPass. The two are logically equivalent — each holds exactly when the other does.\n\nGiven ¬Deploy. By the biconditional, Deploy and ScanPass share the same truth value, so ¬Deploy entails ¬ScanPass — the scan did NOT pass. A two-row check of the biconditional (the only consistent rows are Deploy=ScanPass=true and Deploy=ScanPass=false) shows the world with Deploy false also has ScanPass false. Hence (B) is forced.\n\nRefuting (A): a passing scan is sufficient for deployment (ScanPass → Deploy), so ScanPass would have produced Deploy — contradicting the given ¬Deploy. The scan could not have passed.\nRefuting (C): with a mere one-directional conditional this 'undetermined' answer would be tempting, but the stem specifies necessary AND sufficient, i.e. a biconditional, which fully determines the scan result from the deployment status. This is the key trap — treating a biconditional as a one-way implication.\nRefuting (D): introduces a future rerun the premise never licenses.\nRefuting (E): claims the scan passed yet deployment was blocked, which violates sufficiency (passing guarantees deployment). Impossible under the biconditional. Exactly one option (B) follows."},{"type":"logicalPuzzle","topic":"Schedule/availability intersection under a duration constraint","stem":"For a one-hour review that all four managers must attend in full, which single start time works?","context":"Four managers must all attend a one-hour review that occupies a single one-hour slot starting on the hour. The candidate start times are 09:00, 10:00, 11:00, 12:00, 13:00, 14:00 and 15:00. Each manager is available only at the start times listed:\n• Aisha: 10:00, 11:00, 12:00, 15:00\n• Ben: 09:00, 11:00, 12:00, 13:00, 14:00\n• Chen: 11:00, 12:00, 14:00, 15:00\n• Diego: 09:00, 11:00, 13:00, 14:00, 15:00","options":["10:00","11:00","12:00","14:00","No single start time works for all four."],"answerIndex":1,"reasoning":"A valid slot must lie in every manager's availability set simultaneously (the review is a single one-hour block, so all four must share the same start hour). Intersect the four sets step by step:\n\nAisha ∩ Ben = {11:00, 12:00}. Intersect with Chen {11:00, 12:00, 14:00, 15:00} = {11:00, 12:00}. Intersect with Diego {09:00, 11:00, 13:00, 14:00, 15:00} = {11:00} (Diego has no 12:00).\n\nThe unique common start time is 11:00 — answer (B).\n\nRefuting (A) 10:00: Ben, Chen and Diego are all unavailable at 10:00.\nRefuting (C) 12:00: Diego is not available at 12:00, so it drops out at the final intersection.\nRefuting (D) 14:00: Aisha is not available at 14:00.\nRefuting (E): a common slot does exist (11:00), so 'no slot works' is false. Because exactly one shared hour exists and the review fits in a single block, the duration constraint is met precisely at 11:00."},{"type":"conditional","topic":"Argument evaluation: underlying assumption vs entailed conclusion (business wrapping)","stem":"The argument's conclusion follows ONLY IF which unstated assumption holds?","context":"A divisional head argues: 'Since we introduced the new CRM last quarter, recorded sales rose by 12%. Therefore the CRM caused the increase, so we should roll it out to every region.'","options":["No other material change (pricing, headcount, market demand, seasonality) occurred last quarter that could account for the sales rise.","Sales rose by exactly 12% and not more.","The CRM is cheaper to operate than the previous system.","Every region currently uses a different CRM.","Recorded sales are a more reliable metric than booked revenue."],"answerIndex":0,"reasoning":"The argument moves from a correlation (CRM introduced, then sales rose) to a causal claim (the CRM caused the rise) and then to a recommendation (roll it out everywhere). For the causal step to hold, the rise must not be attributable to some other coincident factor — otherwise it is correlation mistaken for causation. The load-bearing hidden premise is that no other material change could explain the increase.\n\nApply the negation test: assume the negation of (A) — 'some other change (a price cut, more salespeople, a demand surge, seasonality) DID occur and could account for the rise.' Then the CRM is no longer established as the cause and the conclusion collapses. Because negating (A) breaks the argument, (A) is exactly the assumption the argument depends on.\n\nRefuting (B): the precise magnitude (exactly 12%) is irrelevant to whether the CRM, rather than something else, caused the change. Negating it (say the rise was 13%) leaves the causal inference intact.\nRefuting (C): cost of operation is a separate business consideration; the argument is about causation of the sales rise, not affordability. Negating it does not touch the causal claim.\nRefuting (D): the argument never relies on regions using different systems; negating it leaves the causal inference untouched.\nRefuting (E): the choice of sales metric is not what the causal leap depends on; negating it does not break the conclusion. Only (A) is the assumption whose falsity destroys the inference — the classic correlation-as-causation gap."},{"type":"syllogism","topic":"Categorical logic - quantifiers, illicit conversion","stem":"Which conclusion MUST be true on the basis of the two statements alone?","context":"At Meridian Consulting, the following two statements are known to be true:\n(1) All partners are equity holders.\n(2) Some equity holders are based in the Singapore office.\nNo other information is given. Treat only these statements as true, and do not assume any group is non-empty unless a statement says so.","options":["Some partners are based in the Singapore office.","Some equity holders are partners.","All equity holders based in Singapore are partners.","No conclusion about partners' locations is entailed by the statements.","All Singapore-based staff are equity holders."],"answerIndex":3,"reasoning":"Statement (1) gives Partners is a subset of Equity holders. Statement (2) makes the set 'equity holders based in Singapore' non-empty, but says nothing about whether any of those particular equity holders are also partners; the Singapore equity holders could be entirely the non-partner equity holders. Therefore nothing about where partners are based is forced, and option (3) [index 3, 'No conclusion about partners' locations is entailed'] is the correct, defensible answer. Refuting distractors: 'Some partners are based in Singapore' commits the fallacy of assuming the overlap in (2) lands inside the Partner subset - not entailed, since the partner subset and the Singapore-based subset of equity holders need not intersect. 'Some equity holders are partners' requires at least one partner to EXIST; under modern logic 'All partners are equity holders' carries no existential import and is vacuously true even with zero partners (and the context explicitly bars assuming any group is non-empty), so this is not necessitated. 'All Singapore equity holders are partners' is an illicit conversion of (1) plus an unsupported leap. 'All Singapore-based staff are equity holders' illicitly converts (2) (a some-statement does not convert to an all-statement, and the direction is reversed). Hence only the 'no conclusion' option must hold.","reasoningPlanRef":""},{"type":"syllogism","topic":"Only-statements and must/some quantifiers","stem":"Given the two premises, which statement is guaranteed to be true?","context":"Two facts are established about a regional sales division:\n(1) Only managers may approve discounts above 15%.\n(2) Priya approved a discount of 20%.\nAssume both facts are true and complete.","options":["Every manager has approved a discount above 15%.","Priya is a manager.","Some managers are not able to approve discounts.","If Priya is a manager, then she may approve discounts above 30%.","All people who approve any discount are managers."],"answerIndex":1,"reasoning":"'Only managers may approve discounts above 15%' translates to: if a person approves a discount above 15%, that person is a manager (the set of approvers-above-15% is a subset of Managers). Priya approved 20%, which is above 15%, so she falls in the antecedent class and must be a manager. Option (2) [index 1, 'Priya is a manager'] is therefore forced and is the answer. Refuting distractors: 'Every manager has approved a discount above 15%' is the illicit converse of an only-statement - the rule makes manager-status NECESSARY for such approval, it does not assert every manager exercised it. 'Some managers are not able to approve discounts' is consistent with the premises but not entailed; nothing restricts managers' abilities downward. 'If Priya is a manager, then she may approve discounts above 30%' is NOT guaranteed: an only-statement grants no blanket upward permission, so being a manager does not entail permission for a 30% discount, and no fact about 30% is given - so this conditional can fail and is not a certainty. 'All people who approve any discount are managers' overreaches the rule, which constrains only discounts ABOVE 15%, not every discount. Thus (2) is the single defensible certainty.","reasoningPlanRef":""},{"type":"arrangement","topic":"Linear seating with adjacency and ordering constraints","stem":"Which director MUST occupy seat 1?","context":"Five directors - Acharya, Bell, Chen, Diaz and Evans - sit in a single row of five seats numbered 1 to 5 from left to right. Each director takes exactly one seat. The following constraints all apply:\n(1) Acharya sits somewhere to the left of Bell.\n(2) Chen sits in seat 3.\n(3) Diaz and Evans sit in adjacent seats.\n(4) Bell does not sit in seat 5.","options":["Acharya","Bell","Chen","Diaz","Cannot be determined from the constraints"],"answerIndex":0,"reasoning":"Place the absolutes first. Chen is fixed in seat 3 (rule 2), so seats 1,2,4,5 hold Acharya, Bell, Diaz, Evans. Rule 3 requires Diaz and Evans adjacent; among the remaining seats {1,2,4,5} the only adjacent pairs are {1,2} and {4,5} (2 and 4 are separated by Chen in seat 3). So the Diaz/Evans block sits in {1,2} or in {4,5}. Case A - Diaz/Evans in {4,5}: then Acharya and Bell take seats 1 and 2; rule 1 (Acharya left of Bell) forces Acharya=1, Bell=2; rule 4 (Bell not in 5) is satisfied. Valid layouts: A,B,C,D,E and A,B,C,E,D. Case B - Diaz/Evans in {1,2}: then Acharya and Bell take seats 4 and 5; rule 1 forces Acharya=4, Bell=5 - but rule 4 forbids Bell in seat 5, a contradiction, so Case B is impossible. Only Case A survives, and in every surviving layout seat 1 is Acharya. Exhaustive enumeration confirms the only valid permutations are (A,B,C,D,E) and (A,B,C,E,D), both with Acharya in seat 1. Distractors: Bell is fixed at seat 2, Chen at 3, Diaz varies between seats 4 and 5, and 'cannot be determined' is wrong because the constraints pin seat 1 uniquely.","reasoningPlanRef":""},{"type":"logicalPuzzle","topic":"Grouping / room assignment with capacity and compatibility","stem":"Which staff members must BOTH be assigned to Room X?","context":"Six staff - Adeyemi, Brooks, Costa, Dunn, Engel and Farr - are divided between two rooms, Room X and Room Y. Each room holds at most three people and everyone is assigned to exactly one room. The constraints are:\n(1) Adeyemi and Brooks must be in the same room.\n(2) Costa and Dunn must be in different rooms.\n(3) Engel must be in Room X.\n(4) Adeyemi is assigned to Room Y.","options":["Engel and Costa","Engel and Farr","Engel and Dunn","Brooks and Farr","Costa and Farr"],"answerIndex":1,"reasoning":"By rule 4, Adeyemi is in Room Y; by rule 1, Brooks is therefore in Room Y too. By rule 3, Engel is in Room X. That leaves Costa, Dunn and Farr to place. Room Y already holds Adeyemi and Brooks, so it can take at most one more person (cap 3); Room X holds Engel, so it can take at most two more. Three people (Costa, Dunn, Farr) remain and Y can absorb only one of them, so exactly two of them go to Room X. Rule 2 forces Costa and Dunn into different rooms, so exactly one of {Costa, Dunn} is in Y and the other in X - that single Y slot is consumed by one of Costa/Dunn. Therefore Farr cannot go to Y and must be in Room X. So Room X always contains Engel and Farr. Exhaustive check confirms only two valid assignments: X={Engel, Dunn, Farr}, Y={Adeyemi, Brooks, Costa}; and X={Engel, Costa, Farr}, Y={Adeyemi, Brooks, Dunn}. In both, Engel and Farr are in X, so option (2) [index 1] is the unique answer. Distractors: 'Engel and Costa' and 'Engel and Dunn' each name a person who is in X in only one of the two valid worlds (Costa and Dunn swap), so neither pair is guaranteed. 'Brooks and Farr' fails because Brooks is in Y. 'Costa and Farr' fails because Costa is not always in X.","reasoningPlanRef":""},{"type":"conditional","topic":"Propositional logic - contrapositive and mutual exclusion","stem":"If the firm does NOT open the Berlin office, which of the following must be true?","context":"A strategy committee has adopted these binding rules for next year's expansion:\n(1) If the firm hires a new CFO, then it will open the Berlin office.\n(2) The firm will launch the mobile product only if it hires a new CFO.\n(3) The firm will either launch the mobile product or expand the support team (or both).","options":["The firm will hire a new CFO.","The firm will expand the support team.","The firm will not expand the support team.","The firm will launch the mobile product.","The firm will open the Berlin office."],"answerIndex":1,"reasoning":"Assume the Berlin office is NOT opened. Rule 1 says CFO-hire implies Berlin-open; by contrapositive, not-Berlin implies not-CFO, so the firm does NOT hire a new CFO. Rule 2 ('launch mobile only if CFO-hire') means launch-mobile implies CFO-hire; by contrapositive, not-CFO implies not-launch-mobile, so the firm does NOT launch the mobile product. Rule 3 is an inclusive disjunction launch-mobile OR expand-support; with launch-mobile false, the disjunction is satisfiable only if expand-support is true. Therefore the firm must expand the support team - option (2) [index 1]. Refuting distractors: 'The firm will hire a new CFO' is contradicted (we derived not-CFO). 'The firm will not expand the support team' is the exact opposite of the forced conclusion. 'The firm will launch the mobile product' was shown false by the contrapositive of rule 2. 'The firm will open the Berlin office' contradicts the question's premise. Only expanding the support team is forced.","reasoningPlanRef":""},{"type":"sequence","topic":"Task sequencing with precedence and adjacency","stem":"Across all valid schedules, which statement MUST be true?","context":"Five project tasks - P, Q, R, S and T - are each scheduled in exactly one of five consecutive slots numbered 1 to 5 (1 = earliest). The dependencies are:\n(1) P is scheduled before R.\n(2) Q is scheduled in the slot immediately before S.\n(3) T is scheduled in slot 5.\n(4) R is not scheduled in slot 1.","options":["P is always in slot 1.","R is always before S.","Q is always before R.","S is never in slot 5.","R is always in slot 4."],"answerIndex":3,"reasoning":"T is fixed in slot 5 (rule 3). The Q-then-S block (rule 2) must occupy two consecutive slots among 1-4; P must precede R (rule 1) and R cannot be slot 1 (rule 4). Exhaustive enumeration yields exactly three valid orderings: (P,Q,S,R,T), (P,R,Q,S,T), and (Q,S,P,R,T). Test the candidates against all three. 'S is never in slot 5': S sits in slot 3, slot 4, slot 2 respectively - never slot 5, since T owns slot 5. This holds in every case, so option (4) [index 3] is the answer. Refuting the others: 'P is always in slot 1' fails on (Q,S,P,R,T) where P is in slot 3. 'R is always before S' fails on (P,Q,S,R,T) where S precedes R. 'Q is always before R' fails on (P,R,Q,S,T) where R precedes Q. 'R is always in slot 4' fails on (P,R,Q,S,T) where R is in slot 2. Only 'S is never in slot 5' is true across all valid schedules.","reasoningPlanRef":""},{"type":"conditional","topic":"Argument evaluation - correlation vs causation","stem":"Which option identifies the central logical flaw in the manager's conclusion?","context":"A division manager argues: 'In the last two quarters we moved the team to a four-day work week. Over the same period, customer-satisfaction scores rose by eight points. Therefore the four-day work week caused the rise in customer satisfaction, and we should roll it out company-wide.'","options":["The argument assumes a change that coincided with the satisfaction rise was its cause, without ruling out other explanations.","The argument relies on customer-satisfaction scores, which are inherently unreliable.","The argument fails because two quarters is mathematically too short to compute an average.","The argument commits the fallacy of denying the antecedent.","The argument over-generalises from a sample that is too small to be statistically valid."],"answerIndex":0,"reasoning":"The conclusion leaps from co-occurrence (the four-day week and the satisfaction rise happened in the same period) to causation (the four-day week caused the rise). This is the classic correlation-as-causation error: the passage never excludes alternative causes such as a new product, seasonal demand, a pricing change, or a different support tool. Option (1) [index 0] names exactly this flaw and is the defensible answer. Refuting distractors: 'satisfaction scores are inherently unreliable' imports an outside assumption not in the passage - we reason only from what is given, and nothing says the metric is unreliable. 'Two quarters is too short to compute an average' is a fabricated objection; an average over any non-empty period is computable. 'Denying the antecedent' is a conditional fallacy of the form 'if A then B; not A; therefore not B' - the argument has no such conditional structure, so the label does not fit. 'Sample too small to be statistically valid' is a sampling-adequacy objection; the decisive defect is the unjustified causal jump from a single coincidence, not sample size. Hence (1).","reasoningPlanRef":""},{"type":"dataSufficiency","topic":"Schedule-clash / availability sufficiency","stem":"Question: Can a one-hour meeting requiring all three managers be held from 14:00 to 15:00? Using the two statements, determine which is sufficient.","context":"Three managers - A, B and C - must all attend a single continuous one-hour meeting during office hours (09:00-17:00). Evaluate the two numbered statements as a data-sufficiency problem.\nStatement (1): Manager A is busy 09:00-12:00 and 15:00-17:00; Manager B is free for the entire afternoon (12:00-17:00).\nStatement (2): Manager C is busy 13:00-14:00 and 16:00-17:00.","options":["Statement (1) alone is sufficient, but statement (2) alone is not.","Statement (2) alone is sufficient, but statement (1) alone is not.","Both statements together are sufficient, but neither alone is sufficient.","Each statement alone is sufficient.","The two statements together are still not sufficient."],"answerIndex":2,"reasoning":"The question asks whether all three are simultaneously free for 14:00-15:00, so we need the availability of A, B and C in that window. Statement (1) alone: A is busy 09:00-12:00 and 15:00-17:00, so A is free 12:00-15:00 - A's next busy block starts exactly at 15:00 (the slot's end boundary), leaving the full hour 14:00-15:00 clear; B is free all afternoon, so B is free 14:00-15:00. But (1) says nothing about C, so the meeting cannot be confirmed - insufficient. Statement (2) alone: C is busy 13:00-14:00 and 16:00-17:00, so C is free 14:00-15:00 (the busy block ends exactly at 14:00); but (2) says nothing about A or B - insufficient. Both together: A free (12:00-15:00 covers it), B free (entire afternoon), C free (14:00-15:00 lies between C's busy blocks). All three are free, so the meeting CAN be held - a definite YES. Neither statement alone fixes all three attendees, but together they do, so option (3) [index 2] is correct. 'Each alone sufficient' fails because each omits at least one manager; 'together still not sufficient' fails because together they fully determine a YES.","reasoningPlanRef":""},{"type":"sequence","topic":"Comparative ranking from relative clues","stem":"Which conclusion MUST be true about the final ranking?","context":"Six analysts - F, G, H, J, K and L - are ranked by quarterly sales, with rank 1 the highest and rank 6 the lowest, no ties. The known relationships are:\n(1) G is ranked higher than H.\n(2) There are exactly two analysts ranked between F and K.\n(3) J is ranked 1st (highest).\n(4) L is ranked lower than H.\n(5) F is ranked higher than G.","options":["L is ranked 6th (lowest).","K is ranked higher than F.","H is ranked 3rd.","G is ranked higher than F.","F is ranked 2nd and K is ranked 5th, necessarily in that orientation only by coincidence."],"answerIndex":0,"reasoning":"J is rank 1 (rule 3). Chaining rules 5, 1 and 4 gives F > G > H > L (where 'higher' = smaller rank number) - four analysts in strict order, all below J. With J at rank 1, this chain occupies four of ranks 2-6 in order, and K takes the remaining slot. Rule 2 requires exactly two analysts strictly between F and K, so their rank positions differ by exactly 3. Since F heads the F>G>H>L chain and J holds rank 1, F is at rank 2 at the earliest. If F=2 then K=5; G,H,L then fill ranks 3,4,6 in order: G=3, H=4, L=6; the two between F(2) and K(5) are ranks 3 and 4 (G and H) - correct. Exhaustive enumeration returns exactly one solution: J=1, F=2, G=3, H=4, K=5, L=6. Therefore L is ranked 6th - option (1) [index 0] is forced. Refuting distractors: 'K higher than F' is false (K=5, F=2). 'H is ranked 3rd' is false (H=4; G is 3rd). 'G higher than F' reverses rule 5. The last option calls the F/K orientation coincidental, but it is in fact forced by the chain plus the gap constraint, so it mischaracterises the deduction.","reasoningPlanRef":""},{"type":"dataSufficiency","topic":"Ordering sufficiency - finishing positions","stem":"Question: Did W finish ahead of Z? Treat the two statements as a data-sufficiency problem and choose the correct option.","context":"Four runners - W, X, Y and Z - finished a race in positions 1 to 4 with no ties (position 1 = first to finish). Evaluate sufficiency.\nStatement (1): X finished immediately ahead of Y, and Y finished ahead of Z.\nStatement (2): W finished ahead of X.","options":["Statement (1) alone is sufficient, but statement (2) alone is not.","Statement (2) alone is sufficient, but statement (1) alone is not.","Each statement alone is sufficient.","Both statements together are sufficient, but neither alone is sufficient.","The two statements together are still not sufficient to answer."],"answerIndex":3,"reasoning":"We must decide whether W finished ahead of Z (W's position number smaller than Z's). Statement (1) alone gives X immediately ahead of Y and Y ahead of Z, i.e. X > Y > Z in finishing order with X,Y adjacent, but W is unconstrained: X=1,Y=2,Z=3,W=4 puts W behind Z, while W=1,X=2,Y=3,Z=4 puts W ahead of Z - both consistent with (1), so it does not settle the question - insufficient. Statement (2) alone (W ahead of X) says nothing about Z relative to W; Z could finish ahead of or behind W - insufficient. Together: from (1), X is ahead of Y which is ahead of Z, so X is ahead of Z; from (2), W is ahead of X; by transitivity W is ahead of X which is ahead of Z, so W is ahead of Z - a definite YES. Exhaustive enumeration confirms that under both statements the only valid ordering is W,X,Y,Z, with W ahead of Z in every case. Neither statement alone settles it, but the two together force the answer, so option (4) [index 3] is correct. The single-statement options fail because each leaves W-vs-Z open; 'together still not sufficient' fails because transitivity nails it.","reasoningPlanRef":""}]; /* @INJECT:deductive */
+
+function normNum(q,i){return {id:'NUM-'+(i+1),section:'numerical',number:i+1,type:'numerical',stem:q.stem,
+  visual:{kind:'chart',chart:q},options:q.options.map(t=>({text:t})),answerIndex:q.answerIndex,reasoning:q.reasoning,topic:q.topic||''};}
+function normVerb(q,i){return {id:'VER-'+(i+1),section:'verbal',number:i+1,type:q.type||'tfc',passage:q.passage,passageId:q.passageId,
+  stem:q.statement,options:q.options.map(t=>({text:t})),answerIndex:q.answerIndex,reasoning:q.reasoning,topic:q.topic||''};}
+function normDed(q,i){return {id:'DED-'+(i+1),section:'deductive',number:i+1,type:q.type||'logic',context:q.context||'',stem:q.stem,
+  options:q.options.map(t=>({text:t})),answerIndex:q.answerIndex,reasoning:q.reasoning,topic:q.topic||''};}
+
+const SECTIONS=[
+  {key:'numerical',name:'Numerical Reasoning',tag:'Data · charts · multi-step',
+   blurb:'Interpret tables and charts under pressure — percentages, ratios, growth rates, currency and margins.',
+   glyph:'<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="6" y="26" width="7" height="16" rx="1.5"/><rect x="20" y="16" width="7" height="26" rx="1.5"/><rect x="34" y="8" width="7" height="34" rx="1.5"/></svg>'},
+  {key:'verbal',name:'Verbal Reasoning',tag:'Read · evaluate · True/False/Cannot Say',
+   blurb:'Judge statements strictly against dense business and policy passages — and resist the plausible-but-unstated trap.',
+   glyph:'<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M10 8h28v32H10z"/><path d="M16 17h16M16 24h16M16 31h10" stroke-linecap="round"/></svg>'},
+  {key:'inductive',name:'Inductive Reasoning',tag:'Patterns · shapes · the next figure',
+   blurb:'Spot the rule behind sequences, matrices and analogies of abstract shapes — often two rules running at once.',
+   glyph:'<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="13" cy="13" r="5"/><rect x="29" y="8" width="10" height="10" rx="1.5"/><polygon points="13,30 18,40 8,40"/><path d="M29 35h10M34 30v10" stroke-linecap="round"/></svg>'},
+  {key:'deductive',name:'Deductive Reasoning',tag:'Logic · conditions · arrangements',
+   blurb:'Draw watertight conclusions from given premises — syllogisms, conditional chains and constraint puzzles.',
+   glyph:'<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="16" cy="16" r="9"/><circle cx="30" cy="30" r="9"/><path d="M12 30h8v-8" stroke-linecap="round" stroke-linejoin="round"/></svg>'}
+];
+
+let BANK={};
+function buildBank(){
+  BANK={
+    numerical:NUMERICAL_DATA.map(normNum),
+    verbal:VERBAL_DATA.map(normVerb),
+    inductive:buildInductive(),
+    deductive:DEDUCTIVE_DATA.map(normDed)
+  };
+}
+
+/* ------------------------------------------------ APP STATE + ROUTER */
+const LETTERS=['A','B','C','D','E'];
+const LS_KEY='aptitude-room-v1';
+let state={view:'home',mode:'study',section:null,idx:0};
+let store={theme:'light',answers:{},revealed:{},flags:{}};
+let quiz=null; // {section, ids, answers, flags, idx, start, limit, endsAt, timer, submitted}
+
+function load(){try{const s=JSON.parse(localStorage.getItem(LS_KEY));if(s)store=Object.assign(store,s);}catch(e){}}
+function save(){try{localStorage.setItem(LS_KEY,JSON.stringify(store));}catch(e){}}
+function esc(s){return (''+(s==null?'':s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),1900);}
+
+function setTheme(th){document.documentElement.setAttribute('data-theme',th);store.theme=th;save();
+  document.getElementById('themeBtn').innerHTML = th==='dark'
+   ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19" stroke-linecap="round"/></svg>'
+   : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z" stroke-linejoin="round"/></svg>';}
+function toggleTheme(){setTheme(store.theme==='dark'?'light':'dark');}
+
+function go(view,opts){state=Object.assign(state,{view},opts||{});window.scrollTo({top:0,behavior:'smooth'});render();}
+
+function renderNav(){
+  const items=[['home','Overview'],['study','Study'],['quiz','Mock Test'],['key','Answer Key']];
+  document.getElementById('nav').innerHTML=items.map(([v,l])=>{
+    const on=(v===state.view||(v==='study'&&state.view==='studyQ')||(v==='quiz'&&(state.view==='quizSetup'||state.view==='quizQ'||state.view==='results')))?'on':'';
+    return '<button class="'+on+'" onclick="navTo(\''+v+'\')">'+l+'</button>';
+  }).join('');
+}
+function navTo(v){
+  if(v==='study')return go('study');
+  if(v==='quiz')return go('quizSetup');
+  if(v==='key')return go('key');
+  go('home');
+}
+
+/* ------------------------------------------------ VIEWS */
+function render(){
+  renderNav();
+  const app=document.getElementById('app');
+  let html='';
+  if(state.view==='home')html=viewHome();
+  else if(state.view==='study')html=viewStudyPicker();
+  else if(state.view==='studyQ')html=viewQuestion('study');
+  else if(state.view==='quizSetup')html=viewQuizSetup();
+  else if(state.view==='quizQ')html=viewQuestion('quiz');
+  else if(state.view==='results')html=viewResults();
+  else if(state.view==='key')html=viewKey();
+  app.innerHTML=html;
+}
+
+function secCount(k){return (BANK[k]||[]).length;}
+function totalCount(){return SECTIONS.reduce((a,s)=>a+secCount(s.key),0);}
+
+function viewHome(){
+  const ready=totalCount();
+  let cards=SECTIONS.map((s,i)=>{
+    const n=secCount(s.key); const avail=n>0;
+    return '<article class="sec-card"><div class="idx">'+(i+1)+'</div>'+
+      '<div class="glyph">'+s.glyph+'</div>'+
+      '<h3>'+s.name+'</h3><div class="tag">'+s.tag+'</div>'+
+      '<p>'+s.blurb+'</p>'+
+      '<div class="meta"><span><b>'+(avail?n:'—')+'</b> questions</span><span>~<b>'+(avail?Math.round(n*1.1):'—')+'</b> min</span><span>Level <b>Managerial</b></span></div>'+
+      '<div class="acts">'+
+        '<button class="btn" '+(avail?'':'disabled')+' onclick="startStudy(\''+s.key+'\')">Study</button>'+
+        '<button class="btn ghost" '+(avail?'':'disabled')+' onclick="startQuiz(\''+s.key+'\')">Timed test</button>'+
+      '</div></article>';
+  }).join('');
+
+  return ''+
+  '<section class="hero">'+
+    '<div><div class="kicker">Original practice · worked solutions</div>'+
+    '<h2>Train for the <em>managerial</em> SHL — one question at a time.</h2>'+
+    '<p>Eighty questions across the four classic aptitude families, each pitched at the senior-professional band and explained in full. Study at your own pace, then sit a timed mock under exam conditions.</p></div>'+
+    '<div class="hero-stats">'+
+      '<div class="hstat"><div class="n">'+(ready||80)+'</div><div class="l">Questions</div></div>'+
+      '<div class="hstat"><div class="n">4</div><div class="l">Sections</div></div>'+
+    '</div>'+
+  '</section>'+
+  '<div class="rule"></div>'+
+  '<div class="sec-grid">'+cards+'</div>'+
+  '<div class="banner"><div><h4>Sit the full mock</h4><p>All four sections back-to-back under a single clock — the closest thing to the real assessment. Get a per-section breakdown and review every answer.</p></div>'+
+    '<div class="acts"><button class="btn accent lg" '+(ready?'':'disabled')+' onclick="startQuiz(\'all\')">Begin full mock</button></div></div>'+
+  '<div class="tips"><h4>How to get the most from this</h4>'+
+    '<ul>'+
+    '<li>Do each section in <b>Study</b> first — read every solution, even the ones you got right.</li>'+
+    '<li>For Verbal, answer only from the passage. <b>Cannot Say ≠ False.</b></li>'+
+    '<li>In Numerical, estimate first; the options are designed to catch a wrong base or a missed fee.</li>'+
+    '<li>For Inductive, check for <b>two rules at once</b> (e.g. rotation and shading).</li>'+
+    '<li>Then sit the <b>Mock Test</b> timed — managerial pace is roughly a minute a question.</li>'+
+    '<li>Re-take a section after a day; durable recall beats cramming.</li>'+
+    '</ul></div>';
+}
+
+function viewStudyPicker(){
+  let cards=SECTIONS.map(s=>{
+    const n=secCount(s.key),avail=n>0;
+    let done=0;(BANK[s.key]||[]).forEach(q=>{if(store.revealed[q.id])done++;});
+    return '<article class="sec-card"><div class="glyph">'+s.glyph+'</div><h3>'+s.name+'</h3>'+
+      '<div class="tag">'+s.tag+'</div><p>'+s.blurb+'</p>'+
+      '<div class="meta"><span><b>'+(avail?n:'—')+'</b> questions</span><span><b>'+done+'</b> reviewed</span></div>'+
+      '<div class="acts"><button class="btn" '+(avail?'':'disabled')+' onclick="startStudy(\''+s.key+'\')">'+(done?'Continue':'Start')+'</button></div></article>';
+  }).join('');
+  return '<div class="qhead" style="margin-top:18px"><span class="crumb">Study mode · <b>untimed</b></span></div>'+
+    '<p style="color:var(--ink-soft);max-width:60ch;margin-bottom:20px">Work through a section at your own pace. Select an answer to check it, then reveal a full worked solution. Your progress is remembered on this device.</p>'+
+    '<div class="sec-grid">'+cards+'</div>';
+}
+
+function startStudy(key){if(!secCount(key))return;state.mode='study';state.section=key;state.idx=0;go('studyQ');}
+
+function curList(){return state.view==='quizQ'? quiz.questions : (BANK[state.section]||[]);}
+
+function viewQuestion(mode){
+  const list=curList(); if(!list.length)return '<p>Section not available yet.</p>';
+  const q=list[state.idx];
+  const isQuiz=mode==='quiz';
+  const chosen = isQuiz? (quiz.answers[q.id]) : (store.answers[q.id]);
+  const revealed = isQuiz? false : (store.revealed[q.id] || chosen!=null);
+  const sec=SECTIONS.find(s=>s.key===q.section);
+
+  let head='<div class="qhead">'+
+    '<span class="crumb"><b>'+sec.name+'</b></span>'+
+    '<span class="mode-pill">'+(isQuiz?'Mock test':'Study')+'</span>';
+  if(isQuiz)head+='<span class="timer" id="timer">--:--</span>';
+  head+='</div>';
+
+  let body='<div class="paper"><div class="qbody">';
+  body+='<div class="qnum">Question '+(state.idx+1)+' <span style="color:var(--ink-faint)">/ '+list.length+'</span>'+(q.topic?'<span class="qtopic">'+esc(q.topic)+'</span>':'')+'</div>';
+
+  if(q.passage)body+='<div class="passage">'+esc(q.passage).replace(/\n/g,'<br>')+'</div>';
+  if(q.context)body+='<div class="context-box"><span class="lbl">The setup</span>'+esc(q.context).replace(/\n/g,'<br>')+'</div>';
+
+  // visual
+  if(q.visual&&q.visual.kind==='chart')body+=renderChart(q.visual.chart);
+  if(q.visual&&q.visual.kind==='inductive')body+=renderInductiveVisual(q.visual);
+
+  body+='<div class="stem q">'+q.stem+'</div>';
+
+  // options
+  const isFig=q.visual&&q.visual.kind==='inductive';
+  body+='<div class="opts'+(isFig?' grid':'')+'">';
+  q.options.forEach((o,i)=>{
+    let cls='opt'+(isFig?' fig-opt':'');
+    if(revealed){ if(i===q.answerIndex)cls+=' correct'; else if(i===chosen)cls+=' wrong'; }
+    else if(i===chosen)cls+=' sel';
+    const mark = revealed? (i===q.answerIndex?'<span class="mark">Correct</span>':(i===chosen?'<span class="mark">Your pick</span>':'')) :'';
+    body+='<button class="'+cls+'" '+(revealed?'disabled':'')+' onclick="pick(\''+q.id+'\','+i+')">'+
+      '<span class="bub">'+LETTERS[i]+'</span>'+
+      (o.svg? '<span class="figbox">'+o.svg+'</span>' : '<span>'+esc(o.text)+'</span>')+
+      mark+'</button>';
+  });
+  body+='</div>';
+
+  // footer / reveal
+  if(!isQuiz){
+    body+='<div class="qfoot">'+
+      '<button class="btn ghost" onclick="toggleReveal(\''+q.id+'\')">'+(revealed?'Hide solution':'Reveal solution')+'</button>'+
+      (chosen!=null&&!revealed?'<span style="color:var(--ink-soft);font-size:.85rem">Answer recorded — reveal to check.</span>':'')+
+      '</div>';
+    body+='<div class="reveal'+(revealed?' show':'')+'" id="rev-'+q.id+'">'+revealBlock(q,chosen)+'</div>';
+  } else {
+    body+='<div class="qfoot"><button class="btn ghost" onclick="toggleFlag(\''+q.id+'\')">'+(quiz.flags[q.id]?'★ Flagged':'☆ Flag for review')+'</button></div>';
+  }
+  body+='</div></div>';
+
+  // pager + rail
+  let pager='<div class="pager">'+
+    '<button class="btn ghost" '+(state.idx===0?'disabled':'')+' onclick="navQ(-1)">← Prev</button>'+
+    '<span class="pinfo">'+(state.idx+1)+' of '+list.length+'</span>';
+  if(state.idx<list.length-1)pager+='<button class="btn" onclick="navQ(1)">Next →</button>';
+  else if(isQuiz)pager+='<button class="btn accent" onclick="submitQuiz()">Submit test ✓</button>';
+  else pager+='<button class="btn" onclick="navTo(\'study\')">Finish ✓</button>';
+  pager+='</div>';
+
+  // OMR rail
+  let bubbles=list.map((qq,i)=>{
+    let c='';
+    if(i===state.idx)c+=' cur';
+    if(isQuiz){ if(quiz.answers[qq.id]!=null)c+=' done'; if(quiz.flags[qq.id])c+=' flag'; }
+    else { if(store.revealed[qq.id]||store.answers[qq.id]!=null){ c+= store.answers[qq.id]===qq.answerIndex?' right':(store.answers[qq.id]!=null?' wrong':' done'); } }
+    return '<button class="'+c.trim()+'" onclick="jumpQ('+i+')">'+(i+1)+'</button>';
+  }).join('');
+  let rail='<div class="rail"><div class="rhead"><span>'+(isQuiz?'Answer sheet':'Progress')+'</span><span>'+(isQuiz?'Filled-in '+Object.keys(quiz.answers).length+'/'+list.length:'')+'</span></div><div class="omr">'+bubbles+'</div></div>';
+
+  return head+body+pager+rail;
+}
+
+function renderInductiveVisual(v){
+  if(v.layout==='series'){
+    let f=v.frames.map(s=>'<div class="frame">'+s+'</div>').join('');
+    return '<div class="viz"><div class="frames">'+f+'<div class="arrow-sep">→</div><div class="frame q">?</div></div></div>';
+  }
+  if(v.layout==='matrix'){
+    let cells=v.cells.map(c=> c==null? '<div class="mcell q">?</div>' : '<div class="mcell">'+c+'</div>').join('');
+    return '<div class="viz matrix-wrap"><div class="matrix">'+cells+'</div></div>';
+  }
+  if(v.layout==='analogy'){
+    return '<div class="viz"><div class="analogy">'+
+      '<div class="pair"><div class="frame sm">'+v.a+'</div><span class="op">:</span><div class="frame sm">'+v.b+'</div></div>'+
+      '<span class="op">::</span>'+
+      '<div class="pair"><div class="frame sm">'+v.c+'</div><span class="op">:</span><div class="frame q sm">?</div></div>'+
+      '</div></div>';
+  }
+  return ''; // oddoneout: no visual, options carry the figures
+}
+
+function revealBlock(q,chosen){
+  const correct = chosen===q.answerIndex;
+  const got = chosen!=null;
+  let v = got
+    ? '<div class="verdict '+(correct?'ok':'no')+'"><span class="pin">'+(correct?'CORRECT':'NOT QUITE')+'</span>You chose '+LETTERS[chosen]+' · answer is '+LETTERS[q.answerIndex]+'</div>'
+    : '<div class="verdict ok"><span class="pin">ANSWER</span>The answer is '+LETTERS[q.answerIndex]+'</div>';
+  return v+'<div class="reasoning"><span class="lbl">Worked solution</span>'+q.reasoning+'</div>';
+}
+
+function pick(id,i){
+  const list=curList(); const q=list.find(x=>x.id===id);
+  if(state.view==='quizQ'){ quiz.answers[id]=i; }
+  else { store.answers[id]=i; store.revealed[id]=true; save(); }
+  render();
+}
+function toggleReveal(id){store.revealed[id]=!store.revealed[id];save();render();}
+function toggleFlag(id){quiz.flags[id]=!quiz.flags[id];render();}
+function navQ(d){const list=curList();state.idx=Math.max(0,Math.min(list.length-1,state.idx+d));go(state.view);}
+function jumpQ(i){state.idx=i;go(state.view);}
+
+/* ------------------------------------------------ QUIZ */
+function viewQuizSetup(){
+  let opts=SECTIONS.map(s=>{const n=secCount(s.key);return '<button class="opt" '+(n?'':'disabled')+' onclick="startQuiz(\''+s.key+'\')"><span class="bub">'+s.name[0]+'</span><span><b>'+s.name+'</b> — '+(n||'—')+' questions · ~'+Math.round(n*1.1)+' min</span></button>';}).join('');
+  const tot=totalCount();
+  return '<div class="qhead" style="margin-top:18px"><span class="crumb">Mock test · <b>timed</b></span></div>'+
+    '<div class="paper"><div class="qbody">'+
+    '<div class="stem">Choose your mock</div>'+
+    '<p style="color:var(--ink-soft);margin-bottom:18px">Timed at roughly a minute per question — the managerial pace. No solutions until you submit; flag anything you want to revisit.</p>'+
+    '<div class="opts" style="margin-bottom:16px"><button class="opt sel" onclick="startQuiz(\'all\')"><span class="bub">★</span><span><b>Full mock</b> — all '+tot+' questions across four sections · ~'+Math.round(tot*1.1)+' min</span></button></div>'+
+    '<div class="stem" style="font-size:1rem">…or a single section</div>'+
+    '<div class="opts">'+opts+'</div>'+
+    '</div></div>';
+}
+
+function startQuiz(key){
+  let qs=[];
+  if(key==='all')SECTIONS.forEach(s=>qs=qs.concat(BANK[s.key]||[]));
+  else qs=(BANK[key]||[]).slice();
+  if(!qs.length){toast('That section is still being finalised.');return;}
+  const limit=Math.round(qs.length*60); // 60s/question
+  quiz={key,questions:qs,answers:{},flags:{},start:Date.now(),limit,endsAt:Date.now()+limit*1000,submitted:false,timer:null};
+  state.view='quizQ';state.idx=0;
+  render();startTimer();
+}
+function startTimer(){
+  if(quiz.timer)clearInterval(quiz.timer);
+  const tick=()=>{
+    const el=document.getElementById('timer'); if(!el){return;}
+    let left=Math.max(0,Math.round((quiz.endsAt-Date.now())/1000));
+    const m=Math.floor(left/60),s=left%60;
+    el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+    el.classList.toggle('warn',left<=60);
+    if(left<=0){clearInterval(quiz.timer);submitQuiz(true);}
+  };
+  tick();quiz.timer=setInterval(tick,1000);
+}
+function submitQuiz(auto){
+  if(quiz.timer)clearInterval(quiz.timer);
+  quiz.submitted=true;quiz.elapsed=Math.round((Date.now()-quiz.start)/1000);
+  if(auto)toast("Time's up — test submitted.");
+  go('results');
+}
+
+function viewResults(){
+  const qs=quiz.questions; let correct=0;
+  const bySec={};
+  qs.forEach(q=>{const ok=quiz.answers[q.id]===q.answerIndex;if(ok)correct++;
+    (bySec[q.section]=bySec[q.section]||{c:0,t:0}); bySec[q.section].t++; if(ok)bySec[q.section].c++;});
+  const pct=Math.round(correct/qs.length*100);
+  const band = pct>=85?'Outstanding':pct>=70?'Strong':pct>=55?'Solid — keep pushing':pct>=40?'Developing':'Early days';
+  const mm=Math.floor(quiz.elapsed/60),ss=quiz.elapsed%60;
+
+  let cards=Object.keys(bySec).map(k=>{const b=bySec[k],p=Math.round(b.c/b.t*100);
+    const name=SECTIONS.find(s=>s.key===k).name;
+    return '<div class="rcard"><div class="rt">'+name+'</div><div class="rv">'+b.c+'/'+b.t+'</div>'+
+      '<div class="bar"><i style="width:'+p+'%;background:'+(p>=70?'var(--good)':p>=50?'var(--accent)':'var(--bad)')+'"></i></div></div>';
+  }).join('');
+
+  // review chart (reuse bar renderer)
+  const chart={chartType:'bar',dataTitle:'Accuracy by section',unit:'%',labels:Object.keys(bySec).map(k=>SECTIONS.find(s=>s.key===k).name.split(' ')[0]),
+    series:[{name:'Accuracy',values:Object.keys(bySec).map(k=>Math.round(bySec[k].c/bySec[k].t*100))}]};
+
+  return '<div class="result-hero"><div class="score"><em>'+correct+'</em> / '+qs.length+'</div>'+
+    '<div class="band">'+pct+'% · '+band+' · '+ (mm? mm+'m ':'')+ss+'s</div></div>'+
+    '<div class="result-grid">'+cards+'</div>'+
+    (Object.keys(bySec).length>1? renderChart(chart):'')+
+    '<div class="qfoot" style="justify-content:center;margin-top:24px">'+
+      '<button class="btn accent" onclick="reviewQuiz()">Review answers</button>'+
+      '<button class="btn ghost" onclick="go(\'quizSetup\')">Another test</button>'+
+      '<button class="btn ghost" onclick="go(\'home\')">Home</button>'+
+    '</div>';
+}
+function reviewQuiz(){
+  // turn quiz answers into study-style reveal: copy into store and open as study list
+  quiz.questions.forEach(q=>{if(quiz.answers[q.id]!=null){store.answers[q.id]=quiz.answers[q.id];store.revealed[q.id]=true;}else{store.revealed[q.id]=true;}});
+  save();
+  // build a transient review by reusing studyQ over the quiz section(s)
+  state.reviewList=quiz.questions; state.section=quiz.key==='all'?'numerical':quiz.key;
+  // use a dedicated review view via studyQ but on quiz.questions
+  state.view='reviewQ';state.idx=0;render();
+}
+
+/* review reuses question view over quiz.questions */
+const _origCur=curList;
+curList=function(){ if(state.view==='reviewQ')return quiz.questions; return _origCur(); };
+const _origRender=render;
+render=function(){ if(state.view==='reviewQ'){renderNav();document.getElementById('app').innerHTML=viewQuestion('study');return;} _origRender(); };
+
+/* ------------------------------------------------ ANSWER KEY */
+let keyFilter='all';
+function viewKey(){
+  let segs=[['all','All']].concat(SECTIONS.map(s=>[s.key,s.name.split(' ')[0]]));
+  let controls='<div class="key-controls"><div class="seg">'+segs.map(([k,l])=>'<button class="'+(keyFilter===k?'on':'')+'" onclick="setKeyFilter(\''+k+'\')">'+l+'</button>').join('')+'</div>'+
+    '<button class="btn ghost" onclick="window.print()">Print / Save PDF</button></div>';
+  let body='';
+  const secs = keyFilter==='all'? SECTIONS.map(s=>s.key) : [keyFilter];
+  secs.forEach(k=>{
+    const list=BANK[k]||[]; if(!list.length)return;
+    body+='<div class="key-sec-title">'+SECTIONS.find(s=>s.key===k).name+'</div>';
+    list.forEach((q,i)=>{
+      body+='<div class="key-item"><div class="kh"><span class="kid">'+q.id+'</span>'+
+        '<span class="kans">Answer: '+LETTERS[q.answerIndex]+(q.options[q.answerIndex]&&q.options[q.answerIndex].text?' · '+esc(q.options[q.answerIndex].text):'')+'</span></div>'+
+        (q.passage?'<div style="font-size:.85rem;color:var(--ink-faint);margin-bottom:6px;font-style:italic">Passage '+esc(q.passageId||'')+'</div>':'')+
+        '<div class="kstem">'+ (q.context? '<i style="color:var(--ink-soft)">'+esc(q.context).slice(0,160)+(q.context.length>160?'…':'')+'</i><br>':'') + q.stem+'</div>'+
+        '<div class="kreason"><b style="color:var(--accent)">Why:</b> '+q.reasoning+'</div></div>';
+    });
+  });
+  return '<div class="qhead" style="margin-top:18px"><span class="crumb">Answer key · <b>all worked solutions</b></span></div>'+controls+(body||'<p style="color:var(--ink-soft)">Questions are still being finalised — check back in a moment.</p>');
+}
+function setKeyFilter(k){keyFilter=k;render();}
+
+/* ------------------------------------------------ BOOT */
+function boot(){
+  load();
+  setTheme(store.theme||'light');
+  buildBank();
+  render();
+}
+boot();
+</script>
+</body>
+</html>

@@ -28,7 +28,7 @@ const check = (name, cond, extra) => { results.push({ name, pass: !!cond, extra:
   // ---------- HOME ----------
   await shot('home-light', true);
   check('home: 4 section cards', await page.locator('.sec-card').count() === 4);
-  check('home: hero shows 80', (await page.locator('.hstat .n').first().innerText()).trim() === '80');
+  check('home: hero shows 160 (two tests)', (await page.locator('.hstat .n').first().innerText()).trim() === '160');
   const counts = await page.locator('.sec-card .meta b').allInnerTexts();
   check('home: each section shows 20 questions', counts.filter(t => t.trim() === '20').length >= 4, counts.join(','));
 
@@ -168,6 +168,46 @@ const check = (name, cond, extra) => { results.push({ name, pass: !!cond, extra:
   await page.waitForTimeout(150);
   await shot('answer-key-print', true);
   await page.emulateMedia({ media: 'screen' });
+
+  // ---------- TEST 2 (switcher + harder set) ----------
+  await page.evaluate(() => go('home'));
+  await page.waitForSelector('.testswitch');
+  await page.locator('.testswitch button', { hasText: '2' }).click();
+  await page.waitForTimeout(250);
+  check('test switch: activates Test 2', await page.evaluate(() => store.test) === 2);
+  check('test switch: home reflects Test 2', (await page.locator('.testdesc').first().innerText()).includes('Test 2'));
+  await shot('t2-home', true);
+  // Test 2 numerical
+  await page.evaluate(() => startStudy('numerical'));
+  await page.waitForSelector('.qbody');
+  check('T2 numerical: id is T2 + chart/table renders', (await page.evaluate(() => BANK.numerical[0].id)).startsWith('T2-') && (await page.locator('.viz svg.chart, .viz table.dtable').count()) > 0);
+  check('T2 header shows "Test 2"', (await page.locator('.crumb').first().innerText()).toLowerCase().includes('test 2'));
+  const t2ai = await page.evaluate(() => BANK.numerical[0].answerIndex);
+  await page.locator('.opt').nth(t2ai).click();
+  await page.waitForSelector('.opt.correct');
+  check('T2 numerical: reveal + reasoning', (await page.locator('.reveal.show .reasoning').innerText()).length > 40);
+  await shot('t2-numerical-reveal');
+  // Test 2 inductive (the harder figure set)
+  await page.evaluate(() => startStudy('inductive'));
+  await page.waitForSelector('.opt .figbox svg, .frames .frame, .matrix .mcell');
+  check('T2 inductive: figures render', (await page.locator('.opt .figbox svg').count()) >= 4);
+  await shot('t2-inductive-series');
+  await page.locator('.omr button').nth(8).click(); // a matrix
+  await page.waitForTimeout(120);
+  await shot('t2-inductive-matrix');
+  // Test 2 answer key
+  await page.evaluate(() => go('key'));
+  await page.waitForSelector('.key-item');
+  check('T2 answer key: ids are T2', (await page.locator('.key-item .kid').first().innerText()).startsWith('T2-'));
+  await shot('t2-answer-key');
+  // Test 2 quick mock to confirm scoring works on Test 2
+  await page.evaluate(() => { startQuiz('all'); quiz.questions.forEach((q,i)=>{ quiz.answers[q.id]= (i%2===0)? q.answerIndex : (q.answerIndex+1)%q.options.length; }); submitQuiz(false); });
+  await page.waitForSelector('.result-hero');
+  check('T2 full mock: scores + 4 section cards', (await page.locator('.rcard').count()) === 4);
+  await shot('t2-mock-results', true);
+  // back to Test 1 for remaining probes
+  await page.evaluate(() => { selectTest(1); go('home'); });
+  await page.waitForTimeout(150);
 
   // ---------- PROBE: persistence across reload ----------
   await page.evaluate(() => localStorage.clear());

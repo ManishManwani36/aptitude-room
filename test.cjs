@@ -28,7 +28,7 @@ const check = (name, cond, extra) => { results.push({ name, pass: !!cond, extra:
   // ---------- HOME ----------
   await shot('home-light', true);
   check('home: 4 section cards', await page.locator('.sec-card').count() === 4);
-  check('home: hero shows 160 (two tests)', (await page.locator('.hstat .n').first().innerText()).trim() === '160');
+  check('home: hero shows 320 (four tests)', (await page.locator('.hstat .n').first().innerText()).trim() === '320');
   const counts = await page.locator('.sec-card .meta b').allInnerTexts();
   check('home: each section shows 20 questions', counts.filter(t => t.trim() === '20').length >= 4, counts.join(','));
 
@@ -205,6 +205,49 @@ const check = (name, cond, extra) => { results.push({ name, pass: !!cond, extra:
   await page.waitForSelector('.result-hero');
   check('T2 full mock: scores + 4 section cards', (await page.locator('.rcard').count()) === 4);
   await shot('t2-mock-results', true);
+
+  // ---------- TESTS 3 & 4 (switcher reaches 4; each renders + scores) ----------
+  await page.evaluate(() => go('home'));
+  await page.waitForSelector('.testswitch');
+  check('switcher shows 4 tests', await page.locator('.testswitch button').count() === 4);
+  for (const T of [3, 4]) {
+    await page.evaluate(() => go('home'));
+    await page.waitForSelector('.testswitch');
+    await page.locator('.testswitch button', { hasText: String(T) }).click();
+    await page.waitForTimeout(200);
+    check('Test ' + T + ': activates', await page.evaluate(() => store.test) === T);
+    check('Test ' + T + ': 20 per section', await page.evaluate(() => ['numerical','verbal','inductive','deductive'].every(k => BANK[k].length === 20)));
+    // numerical renders + id prefix
+    await page.evaluate(() => startStudy('numerical'));
+    await page.waitForSelector('.qbody');
+    check('T' + T + ' numerical: chart/table + T' + T + ' id', (await page.evaluate(() => BANK.numerical[0].id)).startsWith('T' + T + '-') && (await page.locator('.viz svg.chart, .viz table.dtable').count()) > 0);
+    const ai = await page.evaluate(() => BANK.numerical[0].answerIndex);
+    await page.locator('.opt').nth(ai).click();
+    await page.waitForSelector('.opt.correct');
+    check('T' + T + ' numerical: reveal has reasoning', (await page.locator('.reveal.show .reasoning').innerText()).length > 30);
+    // inductive renders
+    await page.evaluate(() => startStudy('inductive'));
+    await page.waitForSelector('.opt .figbox svg, .frames .frame, .matrix .mcell');
+    check('T' + T + ' inductive: figures render', (await page.locator('.opt .figbox svg').count()) >= 4);
+    await shot('t' + T + '-inductive');
+    // verbal + deductive render
+    await page.evaluate(() => startStudy('verbal'));
+    await page.waitForSelector('.passage');
+    check('T' + T + ' verbal: passage renders', (await page.locator('.passage').innerText()).length > 80);
+    await page.evaluate(() => startStudy('deductive'));
+    await page.waitForSelector('.qbody');
+    check('T' + T + ' deductive: stem renders', (await page.locator('.stem').first().innerText()).length > 10);
+    // answer key
+    await page.evaluate(() => go('key'));
+    await page.waitForSelector('.key-item');
+    check('T' + T + ' answer key: T' + T + ' ids + reasoning', (await page.locator('.key-item .kid').first().innerText()).startsWith('T' + T + '-') && (await page.locator('.key-item .kreason').count()) >= 20);
+    // quick mock scoring
+    await page.evaluate(() => { startQuiz('all'); quiz.questions.forEach((q,i)=>{ quiz.answers[q.id]= (i%2===0)? q.answerIndex : (q.answerIndex+1)%q.options.length; }); submitQuiz(false); });
+    await page.waitForSelector('.result-hero');
+    check('T' + T + ' full mock: 4 section cards', (await page.locator('.rcard').count()) === 4);
+    await shot('t' + T + '-mock-results', true);
+  }
+
   // back to Test 1 for remaining probes
   await page.evaluate(() => { selectTest(1); go('home'); });
   await page.waitForTimeout(150);

@@ -1,7 +1,7 @@
 # The Aptitude Room — SHL Managerial Practice
 
 A self-contained practice bank for **managerial / senior-professional level SHL aptitude tests**.
-**160 original questions** across **two full mock tests** — 20 questions in each of the four classic families, per test — with a fully worked solution for every one. Switch between **Test 1** (the core set) and **Test 2** (all-new scenarios, a notch harder) from the home, study, mock and answer-key screens.
+**320 original questions** across **four full mock tests** — 20 questions in each of the four classic families, per test — with a fully worked solution for every one. Switch between **Test 1–4** from the home, study, mock and answer-key screens; progress and the answer sheet are tracked separately per test.
 
 > **Open `index.html` in any browser.** That single file *is* the app — no install, no server, no internet required (it works offline; web fonts simply fall back to system fonts if you're offline).
 
@@ -11,7 +11,7 @@ A self-contained practice bank for **managerial / senior-professional level SHL 
 
 ## What's inside
 
-Each test has 20 questions per section (80 per test, 160 total). Test 2 raises the difficulty — more chained steps, subtler traps, three-rule matrices and XOR superimposition figures — with entirely new scenarios.
+Each test has 20 questions per section (80 per test, 320 total), all with fresh, non-overlapping scenarios. Test 1 is the core managerial set; Tests 2–4 hold the difficulty at the demanding managerial band — more chained steps, subtler traps, three-rule matrices and XOR/union superimposition figures.
 
 | Section | Per test | Format | Diagrams |
 |---|---|---|---|
@@ -35,8 +35,8 @@ Tips and a recommended study routine are on the home screen.
 2. **Authoring** — themed batches of original questions written to those specs.
 3. **Adversarial verification** — every numerical, verbal and deductive item was *independently re-solved from scratch* by a separate checker; mismatches were corrected (this pass caught and fixed real defects, e.g. a logic item that had two valid answers).
 4. **Inductive engine** — abstract-reasoning items are generated from an explicit rule, and the correct option is produced *by that rule*, so the key is correct by construction.
-5. **Headless test harness** — all 80 questions are checked to render correctly, have a valid single answer, and contain no duplicate/ambiguous options.
-6. **Browser verification** — Playwright drives the real app in Chrome through every flow on **both tests** (study, timed quiz with auto-submit, results, answer key, dark mode, mobile, test switching); 47 functional + UI checks pass with no console errors.
+5. **Headless test harness** — all 320 questions are checked to render correctly, have a valid single answer, and contain no duplicate/ambiguous options.
+6. **Browser verification** — Playwright drives the real app in Chrome through every flow on **all four tests** (study, timed quiz with auto-submit, results, answer key, dark mode, mobile, test switching); 66 functional + UI checks pass with no console errors.
 
 ## Honesty note
 
